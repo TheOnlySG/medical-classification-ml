@@ -1,0 +1,4 @@
+notes.md
+venv/
+__pycache__/
+.ipynb_checkpoints/
