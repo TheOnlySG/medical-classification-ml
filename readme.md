@@ -12,10 +12,12 @@ Currently implemented:
 - Classification Report
 (for heart disease)
 
+update - EDA results helped me finalize the model for Heart Disease Predictor (Random Forest Classifier)
 
 ## Status
 🚧 Project currently under development.
 
 ## yet to implement
-more models testing for heart diseases
-complete prediction system and eda remaining for cancer and diabetes
+- EDA for cancer and diabetes dataset (untouched)
+- pipline for flask
+- prediction system
