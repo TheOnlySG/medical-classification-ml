@@ -2,49 +2,107 @@
 
 A Machine Learning project focused on predicting multiple diseases using patient medical data and classification algorithms.
 
-## Currently Implemented
+The project currently includes complete EDA, preprocessing, model training, and evaluation for:
+- Heart Disease
+- Diabetes
+- Breast Cancer
 
-### Heart Disease
+---
 
-* Exploratory Data Analysis (EDA)
-* Correlation heatmap
-* Train-test split
-* Feature scaling using StandardScaler
-* Logistic Regression
-* Random Forest Classifier
-* Confusion Matrix
-* Classification Report
-* Feature Importance visualization
+# Currently Implemented
 
-### Diabetes
+## Heart Disease Prediction
+- Exploratory Data Analysis (EDA)
+- Correlation Heatmap
+- Feature Scaling using StandardScaler
+- Logistic Regression
+- Random Forest Classifier
+- Confusion Matrix
+- Classification Report
+- Feature Importance Analysis
 
-* Exploratory Data Analysis (EDA)
-* Hidden missing value handling
-* Median Imputation
-* Correlation analysis
-* Logistic Regression
-* Random Forest Classifier
-* Confusion Matrix
-* Classification Report
-* Feature Importance visualization
+---
 
-## Tech Stack
+## Diabetes Prediction
+- Exploratory Data Analysis (EDA)
+- Hidden Missing Value Handling
+- Median Imputation
+- Correlation Analysis
+- Logistic Regression
+- Random Forest Classifier
+- Confusion Matrix
+- Classification Report
+- Feature Importance Visualization
 
-* Python
-* Pandas
-* NumPy
-* Matplotlib
-* Seaborn
-* Scikit-learn
+---
 
-## Status
+## Breast Cancer Prediction
+- Exploratory Data Analysis (EDA)
+- Correlation Heatmap
+- Label Encoding
+- Logistic Regression
+- Random Forest Classifier
+- Confusion Matrix
+- Classification Report
+- Model Comparison
 
-🚧 Project currently under development.
+---
 
-## Yet To Implement
+# Key Learnings from the Project
 
-* Breast Cancer dataset EDA and model training
-* More model experimentation and comparison
-* Model exporting using Pickle/Joblib
-* Complete prediction pipeline
-* Frontend integration for predictions
+- Data preprocessing and cleaning
+- Handling hidden missing values
+- Correlation and multicollinearity analysis
+- Logistic Regression vs Random Forest
+- Model evaluation using:
+  - Accuracy
+  - Precision
+  - Recall
+  - F1-score
+  - Confusion Matrix
+- Understanding dataset separability and model behavior
+
+---
+
+# Tech Stack
+
+- Python
+- Pandas
+- NumPy
+- Matplotlib
+- Seaborn
+- Scikit-learn
+- Jupyter Notebook
+
+---
+
+# Current Status
+
+🚧 Project currently under active development.
+
+The ML models and EDA are completed for all 3 datasets.  
+Next phase of the project focuses on turning the notebooks into a complete medical screening web application.
+
+---
+
+# Planned Features
+
+- Save trained models using Joblib/Pickle
+- Flask based web application
+- Dynamic medical screening forms
+- Disease-specific prediction pipelines
+- Medical style prediction reports
+- PDF report download support
+- Better UI/UX for medical test simulation
+- Deployment and hosting
+
+---
+
+# Future Improvements
+
+- XGBoost implementation
+- Hyperparameter tuning
+- Cross Validation
+- ROC-AUC analysis
+- SHAP / model explainability
+- Probability based risk analysis
