@@ -4,3 +4,5 @@ seaborn
 matplotlib
 scikit-learn
 jupyter
+flask
+joblib

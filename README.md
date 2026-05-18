@@ -106,3 +106,9 @@ Next phase of the project focuses on turning the notebooks into a complete medic
 - ROC-AUC analysis
 - SHAP / model explainability
 - Probability based risk analysis
+
+
+models finalized   
+1. heart - RANDOM FOREST CLASSIFIER
+2. Diabetes  - RANDOM FOREST CLASSIFIER
+3. Cancer - Logistic Regression
