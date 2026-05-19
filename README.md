@@ -1,99 +1,126 @@
-# Disease Prediction using Machine Learning
+# SymptoSense — AI Powered Medical Screening & Analytics
 
-A Machine Learning project focused on predicting multiple diseases using patient medical data and classification algorithms.
+SymptoSense is a Machine Learning based medical screening web application focused on predicting diseases using patient medical data and generating visual health analysis reports.
 
-The project currently includes complete EDA, preprocessing, model training, and evaluation for:
+The project combines:
+- Machine Learning
+- Medical analytics
+- Flask web development
+- Interactive screening forms
+- Report generation concepts
+
+---
+
+# Diseases Currently Supported
+
 - Heart Disease
 - Diabetes
 - Breast Cancer
 
 ---
 
-# Currently Implemented
+# Project Progress
 
-## Heart Disease Prediction
-- Exploratory Data Analysis (EDA)
-- Correlation Heatmap
-- Feature Scaling using StandardScaler
-- Logistic Regression
-- Random Forest Classifier
-- Confusion Matrix
-- Classification Report
-- Feature Importance Analysis
+## Completed
 
----
-
-## Diabetes Prediction
-- Exploratory Data Analysis (EDA)
-- Hidden Missing Value Handling
-- Median Imputation
-- Correlation Analysis
-- Logistic Regression
-- Random Forest Classifier
-- Confusion Matrix
-- Classification Report
-- Feature Importance Visualization
-
----
-
-## Breast Cancer Prediction
-- Exploratory Data Analysis (EDA)
-- Correlation Heatmap
-- Label Encoding
-- Logistic Regression
-- Random Forest Classifier
-- Confusion Matrix
-- Classification Report
-- Model Comparison
-
----
-
-# Key Learnings from the Project
-
+### Machine Learning & Research
+- Complete EDA for all 3 datasets
 - Data preprocessing and cleaning
-- Handling hidden missing values
-- Correlation and multicollinearity analysis
-- Logistic Regression vs Random Forest
-- Model evaluation using:
-  - Accuracy
-  - Precision
-  - Recall
-  - F1-score
-  - Confusion Matrix
-- Understanding dataset separability and model behavior
+- Hidden missing value handling
+- Correlation analysis
+- Feature importance analysis
+- Model evaluation and comparison
+- Final model selection for deployment
+
+### Finalized Models
+| Disease | Final Model |
+|---|---|
+| Heart Disease | Random Forest Classifier |
+| Diabetes | Random Forest Classifier |
+| Breast Cancer | Logistic Regression |
+
+### Production ML Pipeline
+- Separate training scripts created
+- Models exported using Joblib
+- Scalers exported separately
+- Organized project architecture
+
+### Flask Frontend Development
+- Multi-page Flask application setup
+- Landing page completed
+- Heart Disease screening form completed
+- Diabetes screening form completed
+- Breast Cancer screening form completed
+
+---
+
+# Breast Cancer Optimization
+
+The Breast Cancer model was optimized using feature selection.
+
+- Reduced from 30 features → 10 important features
+- Accuracy remained ~97%
+- Improved usability and frontend experience significantly
+
+Selected features include:
+- Radius
+- Texture
+- Perimeter
+- Area
+- Concavity
+- Concave Points
 
 ---
 
 # Tech Stack
 
+## Machine Learning
 - Python
 - Pandas
 - NumPy
+- Scikit-learn
+
+## Data Visualization
 - Matplotlib
 - Seaborn
-- Scikit-learn
-- Jupyter Notebook
+
+## Web Development
+- Flask
+- HTML
+- Bootstrap 5
+
+## Model Serialization
+- Joblib
 
 ---
 
 # Current Status
 
-🚧 Project currently under active development.
+🚧 Active Development
 
-The ML models and EDA are completed for all 3 datasets.  
-Next phase of the project focuses on turning the notebooks into a complete medical screening web application.
+### Completed
+- EDA
+- Model training
+- Model exporting
+- Flask app setup
+- Frontend screening forms
+
+### Currently Working On
+- Backend prediction pipelines
+- Dynamic report pages
+- Flask form handling
+- Model integration with frontend
 
 ---
 
 # Planned Features
 
-- Save trained models using Joblib/Pickle
-- Flask based web application
-- Dynamic medical screening forms
-- Disease-specific prediction pipelines
-- Medical style prediction reports
-- PDF report download support
-- Better UI/UX for medical test simulation
+- Real-time disease prediction
+- Medical style analytics reports
+- Dynamic graphs and comparisons
+- Probability based prediction insights
+- PDF report export
+- Improved UI/UX
 - Deployment and hosting
 
 ---
@@ -104,11 +131,20 @@ Next phase of the project focuses on turning the notebooks into a complete medic
 - Hyperparameter tuning
 - Cross Validation
 - ROC-AUC analysis
-- SHAP / model explainability
-- Probability based risk analysis
+- SHAP / explainable AI
+- Advanced medical analytics dashboard
 
+---
 
-models finalized   
-1. heart - RANDOM FOREST CLASSIFIER
-2. Diabetes  - RANDOM FOREST CLASSIFIER
-3. Cancer - Logistic Regression
+# Learning Outcomes
+
+This project helped in understanding:
+- Real-world ML workflows
+- EDA and preprocessing
+- Feature engineering and selection
+- Model evaluation techniques
+- Flask backend fundamentals
+- Frontend + ML integration
+- Converting notebooks into deployable systems
+
+---

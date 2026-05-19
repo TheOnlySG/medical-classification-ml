@@ -14,7 +14,21 @@ cancer_df['diagnosis']  =  cancer_df['diagnosis'].replace(['M','B'] , [1,0])
 cancer_df['diagnosis'] = cancer_df['diagnosis'].astype(int)
 
 
-x = cancer_df.drop(columns= ['diagnosis'])
+selected_features = [
+    'radius_mean',
+    'texture_mean',
+    'perimeter_mean',
+    'area_mean',
+    'concavity_mean',
+    'concave points_mean',
+    'radius_worst',
+    'perimeter_worst',
+    'area_worst',
+    'concave points_worst'
+]
+
+
+x = cancer_df[selected_features]
 y = cancer_df['diagnosis']
 
 scaler = StandardScaler()
@@ -25,7 +39,7 @@ x_train , x_test , y_train , y_test = train_test_split(
 
 x_train = scaler.fit_transform(x_train)
 
-model = LogisticRegression()
+model = LogisticRegression(max_iter=1000)
 model.fit(x_train , y_train)
 
 

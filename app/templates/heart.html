@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SymptoSense</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body style="background-color: #f4fff6;">
+
+    <div class="container py-5">
+
+
+        <div class="text-center mb-5">
+            <h1 class="fw-bold text-success">Heart Disease Report/Analysis</h1>
+            <p class="text-muted fs-5">
+                Fill in the medical parameters below to generate your heart health analysis report.
+            </p>
+        </div>
+
+        <!-- <div class="card shadow-lg border-0 rounded-4 mb-5">
+            <div class="card-body p-4">
+                <h4 class="text-success fw-bold mb-3">About This Test</h4>
+
+                <p class="text-muted">
+                    This screening system uses Machine Learning models trained on clinical heart disease datasets
+                    to estimate possible heart disease risk patterns.
+                </p>
+
+                <p class="text-muted mb-0">
+                    The generated report includes prediction results, analytics graphs,
+                    and parameter comparisons.
+                </p>
+            </div>
+        </div> -->
+
+
+        <form action="" method="POST">
+
+            
+            <div class="card shadow-lg border-success rounded-4 mb-4">
+                <div class="card-body p-4">
+
+                    <h3 class="text-success fw-bold mb-4">
+                        Patient Information
+                    </h3>
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-semibold">Patient Name</label>
+
+                            <input type="text"
+                                class="form-control form-control-lg"
+                                name="patient_name"
+                                placeholder="e.g. Spandan Ghodke"
+                                required>
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label class="form-label fw-semibold">Age</label>
+
+                            <input type="number"
+                                class="form-control form-control-lg"
+                                name="age"
+                                placeholder="e.g. 20"
+                                required>
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label class="form-label fw-semibold">Sex</label>
+
+                            <select class="form-select form-select-lg" name="sex">
+
+                                <option value="1">Male</option>
+                                <option value="0">Female</option>
+
+                            </select>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            
+            <div class="card shadow-lg border-success rounded-4 mb-4">
+
+                <div class="card-body p-4">
+
+                    <h3 class="text-success fw-bold mb-4">
+                        Heart Metrics
+                    </h3>
+
+                    <div class="row">
+
+                        <div class="col-md-4 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Resting Blood Pressure
+                            </label>
+
+                            <input type="number"
+                                class="form-control form-control-lg"
+                                name="trestbps"
+                                placeholder="e.g. 120"
+                                required>
+
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Cholesterol
+                            </label>
+
+                            <input type="number"
+                                class="form-control form-control-lg"
+                                name="chol"
+                                placeholder="e.g. 240"
+                                required>
+
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Maximum Heart Rate
+                            </label>
+
+                            <input type="number"
+                                class="form-control form-control-lg"
+                                name="thalach"
+                                placeholder="e.g. 150"
+                                required>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            
+            <div class="card shadow-lg border-success rounded-4 mb-4">
+
+                <div class="card-body p-4">
+
+                    <h3 class="text-success fw-bold mb-4">
+                        Clinical Indicators
+                    </h3>
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Chest Pain Type
+                            </label>
+
+                            <select class="form-select form-select-lg" name="cp">
+
+                                <option value="0">Typical Angina</option>
+                                <option value="1">Atypical Angina</option>
+                                <option value="2">Non-anginal Pain</option>
+                                <option value="3">Asymptomatic</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Fasting Blood Sugar > 120
+                            </label>
+
+                            <select class="form-select form-select-lg" name="fbs">
+
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Resting ECG
+                            </label>
+
+                            <select class="form-select form-select-lg" name="restecg">
+
+                                <option value="0">Normal</option>
+                                <option value="1">ST-T Wave Abnormality</option>
+                                <option value="2">Left Ventricular Hypertrophy</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Exercise Induced Angina
+                            </label>
+
+                            <select class="form-select form-select-lg" name="exang">
+
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Oldpeak
+                            </label>
+
+                            <input type="number"
+                                step="any"
+                                class="form-control form-control-lg"
+                                name="oldpeak"
+                                placeholder="e.g. 1.4"
+                                required>
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Slope
+                            </label>
+
+                            <select class="form-select form-select-lg" name="slope">
+
+                                <option value="0">Upsloping</option>
+                                <option value="1">Flat</option>
+                                <option value="2">Downsloping</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Major Vessels (ca)
+                            </label>
+
+                            <select class="form-select form-select-lg" name="ca">
+
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Thalassemia
+                            </label>
+
+                            <select class="form-select form-select-lg" name="thal">
+
+                                <option value="1">Normal</option>
+                                <option value="2">Fixed Defect</option>
+                                <option value="3">Reversible Defect</option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            
+            <div class="text-center mt-5">
+
+                <button type="submit"
+                    class="btn btn-success btn-lg px-5 py-3 rounded-pill shadow-lg">
+
+                    Generate Heart Report
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

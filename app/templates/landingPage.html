@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SymptoSense</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  </head>
+  <body>
+    <div id="carouselExampleDark" class="carousel  slide">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="10000">
+      <img src="https://fastly.picsum.photos/id/660/1200/500.jpg?hmac=_mJK_LVa-6W0l46Ct4pobfeQLgczwWLYwH2tvRE8Trk"class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h1>Predict Diseases Accurately</h1>
+        <h4> uses machine lerning models to predict the posibilites of diseases. </h4>
+      </div>
+    </div>
+    <div class="carousel-item" data-bs-interval="2000">
+      <img src="https://fastly.picsum.photos/id/1012/1200/500.jpg?hmac=POTbcYSXCOZbOGlXetv9dHtD0m4NNIC-34GsBqHhZk8" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h1>Genrate a usefull visual report</h1>
+        <h4> the report consists of graphs , prediction , and related visuals to understand the condition properly </h4>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="https://fastly.picsum.photos/id/880/1200/500.jpg?hmac=9YwO5Agumx3NPsa3zgBLwhW1oXJDw7DWuartnRgMWEE" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h1>Diabetes | cancer | heart Disease</h1>
+        <h4> 3 avaliable tests </h4>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<div class="card-group">
+  <div class="card">
+    
+    <div class="card-body">
+      <h5 class="card-title">Heart Report</h5>
+      <p class="card-text">Heart Diseases are getting very much common in todays world.Our genrated reports have a 87% accuracy for predictions.</p>
+    </div>
+    <div class="card-footer">
+      <a href="{{ url_for('heart') }}" class="btn btn-outline-success">
+            Generate Heart Report
+      </a>
+    </div>
+  </div>
+  <div class="card">
+    
+    <div class="card-body">
+      <h5 class="card-title">Cancer Report</h5>
+      <p class="card-text">Cancer can get deadly if not predicted in early stages.Our Brest Cancer reports show a flashing 98% accuracy</p>
+    </div>
+    <div class="card-footer">
+      <a href="{{ url_for('cancer') }}" class="btn btn-outline-success">Generate Breast Cancer Reports</a>
+    </div>
+  </div>
+  <div class="card">
+    
+    <div class="card-body">
+      <h5 class="card-title">Diabetes Report</h5>
+      <p class="card-text">The model currently achieves around 77% accuracy and can help identify potential diabetes risk patterns.</p>
+    </div>
+    <div class="card-footer">
+      <a href="{{ url_for('diabetes')}}" class="btn btn-outline-success">Generate Diabetes Report</a>
+    </div>
+  </div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>
+

@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SymptoSense</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body style="background-color: #f4fff6;">
+    <div class="container py-5">
+
+        <div class="text-center mb-5">
+
+            <h1 class="fw-bold text-success">
+                Breast Cancer Report/Analysis
+            </h1>
+
+            <p class="text-muted fs-5">
+                Fill in the diagnostic parameters below to generate your breast cancer analysis report.
+            </p>
+
+        </div>
+
+        <form action="" method="POST">
+
+            <div class="card  border-success rounded-4 mb-4">
+
+                <div class="card-body p-4">
+
+                    <h3 class="text-success fw-bold mb-4">
+                        Patient Information
+                    </h3>
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Patient Name
+                            </label>
+
+                            <input type="text"
+                                class="form-control form-control-lg"
+                                name="patient_name"
+                                placeholder="e.g. jane watson"
+                                required>
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Mean Radius
+                            </label>
+
+                            <input type="number"
+                                step="any"
+                                class="form-control form-control-lg"
+                                name="radius_mean"
+                                placeholder="e.g. 14.2"
+                                required>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="card shadow-lg border-success rounded-4 mb-4">
+
+                <div class="card-body p-4">
+
+                    <h3 class="text-success fw-bold mb-4">
+                        Tumor Measurements
+                    </h3>
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Mean Texture
+                            </label>
+
+                            <input type="number"
+                                step="any"
+                                class="form-control form-control-lg"
+                                name="texture_mean"
+                                placeholder="e.g. 20.5"
+                                required>
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Mean Perimeter
+                            </label>
+
+                            <input type="number"
+                                step="any"
+                                class="form-control form-control-lg"
+                                name="perimeter_mean"
+                                placeholder="e.g. 90.2"
+                                required>
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Mean Area
+                            </label>
+
+                            <input type="number"
+                                step="any"
+                                class="form-control form-control-lg"
+                                name="area_mean"
+                                placeholder="e.g. 600"
+                                required>
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Mean Concavity
+                            </label>
+
+                            <input type="number"
+                                step="any"
+                                class="form-control form-control-lg"
+                                name="concavity_mean"
+                                placeholder="e.g. 0.12"
+                                required>
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Mean Concave Points
+                            </label>
+
+                            <input type="number"
+                                step="any"
+                                class="form-control form-control-lg"
+                                name="concave points_mean"
+                                placeholder="e.g. 0.08"
+                                required>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="card shadow-lg border-success rounded-4 mb-4">
+
+                <div class="card-body p-4">
+
+                    <h3 class="text-success fw-bold mb-4">
+                        Worst Case Measurements
+                    </h3>
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Worst Radius
+                            </label>
+
+                            <input type="number"
+                                step="any"
+                                class="form-control form-control-lg"
+                                name="radius_worst"
+                                placeholder="e.g. 18.5"
+                                required>
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Worst Perimeter
+                            </label>
+
+                            <input type="number"
+                                step="any"
+                                class="form-control form-control-lg"
+                                name="perimeter_worst"
+                                placeholder="e.g. 120"
+                                required>
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Worst Area
+                            </label>
+
+                            <input type="number"
+                                step="any"
+                                class="form-control form-control-lg"
+                                name="area_worst"
+                                placeholder="e.g. 900"
+                                required>
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Worst Concave Points
+                            </label>
+
+                            <input type="number"
+                                step="any"
+                                class="form-control form-control-lg"
+                                name="concave points_worst"
+                                placeholder="e.g. 0.15"
+                                required>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="text-center mt-5">
+
+                <button type="submit"
+                    class="btn btn-success btn-lg px-5 py-3 rounded-pill shadow-lg">
+
+                    Generate Cancer Report
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

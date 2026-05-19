@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SymptoSense</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body style="background-color: #f4fff6;">
+    <div class="container py-5">
+
+        <div class="text-center mb-5">
+            <h1 class="fw-bold text-success">Diabetes Analysis/Report</h1>
+
+            <p class="text-muted fs-5">
+                Fill in the medical parameters below to generate your diabetes analysis report.
+            </p>
+        </div>
+
+        <form action="" method="POST">
+
+            <div class="card shadow-lg border-success rounded-4 mb-4">
+
+                <div class="card-body p-4">
+
+                    <h3 class="text-success fw-bold mb-4">
+                        Patient Information
+                    </h3>
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Patient Name
+                            </label>
+
+                            <input type="text"
+                                class="form-control form-control-lg"
+                                name="patient_name"
+                                placeholder="e.g. Spandan Ghodke"
+                                required>
+
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Age
+                            </label>
+
+                            <input type="number"
+                                class="form-control form-control-lg"
+                                name="Age"
+                                placeholder="e.g. 35"
+                                required>
+
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Pregnancies
+                            </label>
+
+                            <input type="number"
+                                class="form-control form-control-lg"
+                                name="Pregnancies"
+                                placeholder="e.g. 2"
+                                required>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="card shadow-lg border-success rounded-4 mb-4">
+
+                <div class="card-body p-4">
+
+                    <h3 class="text-success fw-bold mb-4">
+                        Health Metrics
+                    </h3>
+
+                    <div class="row">
+
+                        <div class="col-md-4 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Glucose
+                            </label>
+
+                            <input type="number"
+                                class="form-control form-control-lg"
+                                name="Glucose"
+                                placeholder="e.g. 140"
+                                required>
+
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Blood Pressure
+                            </label>
+
+                            <input type="number"
+                                class="form-control form-control-lg"
+                                name="BloodPressure"
+                                placeholder="e.g. 80"
+                                required>
+
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Skin Thickness
+                            </label>
+
+                            <input type="number"
+                                class="form-control form-control-lg"
+                                name="SkinThickness"
+                                placeholder="e.g. 25"
+                                required>
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Insulin
+                            </label>
+
+                            <input type="number"
+                                class="form-control form-control-lg"
+                                name="Insulin"
+                                placeholder="e.g. 120"
+                                required>
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                BMI
+                            </label>
+
+                            <input type="number"
+                                step="any"
+                                class="form-control form-control-lg"
+                                name="BMI"
+                                placeholder="e.g. 28.5"
+                                required>
+
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+
+                            <label class="form-label fw-semibold">
+                                Diabetes Pedigree Function
+                            </label>
+
+                            <input type="number"
+                                step="any"
+                                class="form-control form-control-lg"
+                                name="DiabetesPedigreeFunction"
+                                placeholder="e.g. 0.627"
+                                required>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="text-center mt-5">
+
+                <button type="submit"
+                    class="btn btn-success btn-lg px-5 py-3 rounded-pill shadow-lg">
+
+                    Generate Diabetes Report
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
