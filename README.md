@@ -1,4 +1,4 @@
-# SymptoSense
+# SymptoSense — AI Powered Medical Screening & Analytics
 
 SymptoSense is a Machine Learning based medical screening web application focused on predicting diseases using patient medical data and generating visual health analysis reports.
 
