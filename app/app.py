@@ -13,6 +13,9 @@ cancer_scaler = joblib.load('models/cancer_scaler.pkl')
 diabetes_model = joblib.load('models/diabetes_model.pkl')
 diabetes_scaler = joblib.load('models/diabetes_scaler.pkl')
 
+heart_model = joblib.load('models/heart_model.pkl')
+heart_scaler = joblib.load('models/heart_scaler.pkl')
+
 
 
 @app.route('/') #means attach this function to the url route
@@ -20,8 +23,50 @@ def home():
     return render_template("landingPage.html")
 
 
-@app.route('/heart')
+@app.route('/heart' , methods = ['GET' , 'POST'])
 def heart():
+    if request.method == 'POST':
+        name = request.form['patient_name']
+        age = int(request.form['age'])
+        sex = int(request.form['sex'])
+        cp = int(request.form['cp'])
+        trestbps = int(request.form['trestbps'])
+        chol = int(request.form['chol'])
+        fbs = int(request.form['fbs'])
+        restecg = int(request.form['restecg'])
+        thalach = int(request.form['thalach'])
+        exang = int(request.form['exang'])
+        oldpeak = float(request.form['oldpeak'])
+        slope = int(request.form['slope'])
+        ca = int(request.form['ca'])
+        thal = int(request.form['thal'])
+
+        input_array = np.array([[
+            age,
+            sex,
+            cp,
+            trestbps,
+            chol,
+            fbs,
+            restecg,
+            thalach,
+            exang,
+            oldpeak,
+            slope,
+            ca,
+            thal
+        ]])
+
+        scaled_input = heart_scaler.transform(input_array)
+        prediction = heart_model.predict(scaled_input)
+
+        if prediction[0] == 1:
+            print('has a heart disease')
+        else :
+            print("does not have a heart disease")
+
+    
+
     return render_template("heart.html")
 
 @app.route('/cancer' , methods = ['GET' , 'POST'])
