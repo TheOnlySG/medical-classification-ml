@@ -1,6 +1,9 @@
 from flask import Flask , render_template , request
 import joblib
 import numpy as np
+import pandas as pd
+import graph_utils as gp
+
 
 #creating a flask app
 app = Flask(__name__)
@@ -41,30 +44,38 @@ def heart():
         ca = int(request.form['ca'])
         thal = int(request.form['thal'])
 
-        input_array = np.array([[
-            age,
-            sex,
-            cp,
-            trestbps,
-            chol,
-            fbs,
-            restecg,
-            thalach,
-            exang,
-            oldpeak,
-            slope,
-            ca,
-            thal
-        ]])
+        input_df = pd.DataFrame([{
+                'age': age,
+                'sex': sex,
+                'cp': cp,
+                'trestbps': trestbps,
+                'chol': chol,
+                'fbs': fbs,
+                'restecg': restecg,
+                'thalach': thalach,
+                'exang': exang,
+                'oldpeak': oldpeak,
+                'slope': slope,
+                'ca': ca,
+                'thal': thal
+            }])
 
-        scaled_input = heart_scaler.transform(input_array)
+        scaled_input = heart_scaler.transform(input_df)
         prediction = heart_model.predict(scaled_input)
 
         if prediction[0] == 1:
-            print('has a heart disease')
+            result = ('has a heart disease')
         else :
-            print("does not have a heart disease")
+            result = ("does not have a heart disease")
 
+        gp.heart_chol_graph(chol)
+        gp.heart_thalach_graph(thalach)
+        gp.heart_oldpeak_graph(oldpeak)
+
+        return render_template(
+            'heart_report.html',
+            prediction = result
+        )
     
 
     return render_template("heart.html")
@@ -86,27 +97,31 @@ def cancer():
         area_worst = float(request.form['area_worst'])
         concave_points_worst = float(request.form['concave_points_worst'])
 
-        input_array = np.array([[
-            radius_mean,
-            texture_mean,
-            perimeter_mean,
-            area_mean,
-            concavity_mean,
-            concave_points_mean,
-            radius_worst,
-            perimeter_worst,
-            area_worst,
-            concave_points_worst
-        ]])
+        input_df = pd.DataFrame([{
+            'radius_mean': radius_mean,
+            'texture_mean': texture_mean,
+            'perimeter_mean': perimeter_mean,
+            'area_mean': area_mean,
+            'concavity_mean': concavity_mean,
+            'concave points_mean': concave_points_mean,
+            'radius_worst': radius_worst,
+            'perimeter_worst': perimeter_worst,
+            'area_worst': area_worst,
+            'concave points_worst': concave_points_worst
+        }])
 
-        scaled_input = cancer_scaler.transform(input_array)
+        scaled_input = cancer_scaler.transform(input_df)
         prediction = cancer_model.predict(scaled_input)
         
         if prediction[0] == 1:
-            print('malignent')
+            result = 'malignent / has cancer'
         else:
-            print('Benign')
+            result = 'Benign / dosent has cancer'
             
+        return render_template(
+            'cancer_report.html',
+            prediction = result
+        )
     return render_template("cancer.html")
 
 
@@ -123,24 +138,29 @@ def diabetes():
         BMI = float(request.form['BMI'])
         DiabetesPedigreeFunction = float(request.form['DiabetesPedigreeFunction'])
 
-        input_array = np.array([[
-            Pregnancies,
-            Glucose,
-            BloodPressure,
-            SkinThickness,
-            Insulin,
-            BMI,
-            DiabetesPedigreeFunction,
-            Age
-        ]])
+        input_df = pd.DataFrame([{
+            'Pregnancies': Pregnancies,
+            'Glucose': Glucose,
+            'BloodPressure': BloodPressure,
+            'SkinThickness': SkinThickness,
+            'Insulin': Insulin,
+            'BMI': BMI,
+            'DiabetesPedigreeFunction': DiabetesPedigreeFunction,
+            'Age': Age
+        }])
 
-        scaled_input = diabetes_scaler.transform(input_array)
+        scaled_input = diabetes_scaler.transform(input_df)
         prediction = diabetes_model.predict(scaled_input)
 
         if prediction[0] == 1:
-            print("Diabetic")
+            result = "Diabetic"
         else :
-            print("Not Diabetic")
+            result = "Not Diabetic"
+
+        return render_template(
+            'diabetes_report.html',
+            prediction = result
+        )
 
     return render_template("diabetes.html")
 
