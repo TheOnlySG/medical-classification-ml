@@ -87,7 +87,8 @@ def heart():
         return render_template(
             'heart_report.html',
             prediction = result,
-            comparison_table=comparison_table
+            comparison_table=comparison_table,
+            patient_name = name
         )
     
 
@@ -149,7 +150,8 @@ def cancer():
         return render_template(
             'cancer_report.html',
             prediction = result,
-            comparison_table = comparison_table
+            comparison_table = comparison_table,
+            patient_name = name
         )
     return render_template("cancer.html")
 
@@ -204,7 +206,8 @@ def diabetes():
         return render_template(
             'diabetes_report.html',
             prediction = result,
-            comparison_table = comparison_table
+            comparison_table = comparison_table,
+            patient_name = name
         )
 
     return render_template("diabetes.html")
