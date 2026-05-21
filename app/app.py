@@ -130,10 +130,26 @@ def cancer():
             result = 'malignent / has cancer'
         else:
             result = 'Benign / dosent has cancer'
+
+        gp.cancer_radius_worst(radius_worst)
+        gp.cancer_concave_worst(concave_points_worst)
+        gp.cancer_area_worst(area_worst)
+        
+        patient_values = {
+            'radius_worst': radius_worst,
+            'area_worst': area_worst,
+            'concave points_worst': concave_points_worst,
+            'texture_mean': texture_mean,
+            'concave points_mean': concave_points_mean,
+            'perimeter_worst': perimeter_worst
+        }
+        gp.cancer_final(patient_values)
+        comparison_table = gp.cancer_comparison_table(patient_values)
             
         return render_template(
             'cancer_report.html',
-            prediction = result
+            prediction = result,
+            comparison_table = comparison_table
         )
     return render_template("cancer.html")
 

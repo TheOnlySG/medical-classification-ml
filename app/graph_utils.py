@@ -5,6 +5,7 @@ from sklearn.preprocessing import MinMaxScaler
 import numpy as np
 
 heart_df = pd.read_csv('data/heart.csv')
+cancer_df = pd.read_csv('data/cancer.csv')
 
 def heart_chol_graph(chol):
     patient_chol = chol
@@ -194,7 +195,7 @@ def heart_comparison_table(patient_values):
     ]
 
     healthy_patients = heart_df[heart_df['target'] == 0]
-    healthy_median = healthy_patients[features].median(0)
+    healthy_median = healthy_patients[features].median()
     patient_values_list = [
         patient_values[feature]
         for feature in features
@@ -206,3 +207,208 @@ def heart_comparison_table(patient_values):
     })
     comparison_table = comparison_table.round(2)
     return comparison_table.to_dict(orient='records')
+
+
+def cancer_radius_worst(patient_radius_worst):
+    plt.figure(figsize=(10,6))
+    sns.kdeplot(
+        data = cancer_df[cancer_df['diagnosis'] == 'B'],
+        x = 'radius_worst',
+        fill =True,
+        color = 'green',
+        label = 'Benign'
+    )
+
+    sns.kdeplot(
+        data = cancer_df[cancer_df['diagnosis'] == 'M'],
+        x = 'radius_worst',
+        fill =True,
+        color = 'red',
+        label = 'Malignant'
+    )
+    plt.axvline(
+        patient_radius_worst,
+        color = 'blue',
+        linestyle = '--',
+        linewidth=3,
+        label = 'Patient'
+    )
+
+    plt.title('Radius Worst Distribution Analysis')
+    plt.xlabel('Radius Worst')
+    plt.ylabel('Density')
+    plt.legend()
+    plt.grid(alpha = 0.3)
+    plt.tight_layout()
+    plt.savefig('app/static/graphs/cancer_radius_worst.jpg')
+    plt.close()
+
+
+def cancer_concave_worst(patient_concave_worst):
+    plt.figure(figsize=(10,6))
+    sns.kdeplot(
+        data = cancer_df[cancer_df['diagnosis'] == 'B'],
+        x = 'concave points_worst',
+        color = 'green',
+        fill = True,
+        label = 'Benign'
+    )
+
+    sns.kdeplot(
+        data = cancer_df[cancer_df['diagnosis'] == "M"],
+        x = 'concave points_worst',
+        color ='red',
+        fill = True,
+        label = 'Malignant'
+    )
+
+    plt.axvline(
+        patient_concave_worst,
+        color = 'blue',
+        linestyle = '--',
+        linewidth = 3,
+        label = 'Patient'
+    )
+
+    plt.title('Concave Patient Worst vs Distribution Analysis')
+    plt.xlabel('Concave Points Worst')
+    plt.ylabel('Density')
+    plt.legend()
+    plt.grid(alpha = 0.3)
+    plt.tight_layout()
+    plt.savefig('app/static/graphs/cancer_concave_worst.jpg')
+    plt.close()
+
+def cancer_area_worst(patient_area_worst):
+    plt.figure(figsize=(10,6))
+    sns.violinplot(
+        data = cancer_df[cancer_df['diagnosis'] == 'M'],
+        y = 'area_worst',
+        color = 'gray',
+        inner = 'quartile'
+    )
+    plt.scatter(
+        0.1,
+        patient_area_worst,
+        color = 'cyan',
+        marker = 'x',
+        s = 200,
+        label = 'Patient'
+    )
+
+    plt.title('Malignant Area Worst Distribution')
+    plt.ylabel('Area Worst')
+    plt.legend()
+    plt.grid(alpha = 0.9)
+    plt.tight_layout()
+    plt.savefig('app/static/graphs/cancer_area_worst.jpg')
+
+
+def cancer_final(patient_values):
+    features = [
+        'radius_worst',
+        'area_worst',
+        'concave points_worst',
+        'texture_mean',
+        'concave points_mean',
+        'perimeter_worst'
+    ]
+    feature_display_names = [
+        'Radius Worst',
+        'Area Worst',
+        'Concave Points Worst',
+        'Texture Mean',
+        'Concave Points Mean',
+        'Perimeter Worst'
+    ]
+
+    coefficients = [
+        1.746043,
+        1.734130,
+        1.717279,
+        1.270087,
+        1.226007,
+        1.139706
+    ]
+
+    patient_df = pd.DataFrame([patient_values])
+    patient_scaler = MinMaxScaler()
+    patient_scaler.fit(cancer_df[features])
+    normalized_patients = patient_scaler.transform(patient_df).flatten()
+    normalized_patients = np.clip(normalized_patients,0,1)
+
+    importance_scaler = MinMaxScaler()
+    normalized_coeff = importance_scaler.fit_transform(
+        np.array(coefficients).reshape(-1,1)
+    ).flatten()
+
+
+    plt.figure(figsize=(10,6))
+    sns.barplot(
+        x = normalized_coeff,
+        y = feature_display_names,
+        color = 'gray',
+        alpha = 0.8,
+        label = 'Model Importance'
+    )
+
+    plt.scatter(
+        normalized_patients,
+        feature_display_names,
+        color = 'blue',
+        marker = 'x',
+        s = 200,
+        label = 'Patient Feature Strength'
+    )
+
+    plt.xlim(0,1.05) #set limit to graph bars
+    plt.xlabel('Relative Importance and Patient Strength')
+    plt.title('Cancer AI Attention vs Patient Clinical Profile')
+    plt.legend()
+    plt.grid(alpha  = 0.3)
+    plt.tight_layout()
+    plt.savefig('app/static/graphs/cancer_final.jpg')
+
+def cancer_comparison_table(patient_values):
+
+    features = [
+        'radius_worst',
+        'area_worst',
+        'concave points_worst',
+        'texture_mean',
+        'concave points_mean',
+        'perimeter_worst'
+    ]
+
+    feature_display_names = [
+        'Radius Worst',
+        'Area Worst',
+        'Concave Points Worst',
+        'Texture Mean',
+        'Concave Points Mean',
+        'Perimeter Worst'
+    ]
+
+    healthy_patients = cancer_df[cancer_df['diagnosis'] == 'B']
+
+    healthy_median = healthy_patients[features].median()
+
+    patient_values_list = [
+        patient_values[feature]
+        for feature in features
+    ]
+
+    comparison_table = pd.DataFrame({
+        'Features': feature_display_names,
+        'Healthy Median': healthy_median.values,
+        'Your Values': patient_values_list
+    })
+
+    comparison_table = comparison_table.round(2)
+
+    return comparison_table.to_dict(orient='records')
+    plt.close()
+    
+
+
+
