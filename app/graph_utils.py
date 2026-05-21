@@ -6,6 +6,7 @@ import numpy as np
 
 heart_df = pd.read_csv('data/heart.csv')
 cancer_df = pd.read_csv('data/cancer.csv')
+diabetes_df = pd.read_csv('data/diabetes.csv')
 
 def heart_chol_graph(chol):
     patient_chol = chol
@@ -408,6 +409,200 @@ def cancer_comparison_table(patient_values):
 
     return comparison_table.to_dict(orient='records')
     plt.close()
+
+def diabetes_glucose(patient_glucose):
+    plt.figure(figsize=(10,6))
+    sns.kdeplot(
+        data = diabetes_df[diabetes_df['Outcome'] == 1],
+        x = 'Glucose',
+        color = 'red',
+        fill = True,
+        label = 'Diabetic'
+    )
+    sns.kdeplot(
+        data = diabetes_df[diabetes_df['Outcome'] == 0 ],
+        x = 'Glucose',
+        color = 'green',
+        label = 'Healthy',
+        fill = True
+    )
+    plt.axvline(
+        patient_glucose,
+        linestyle='--',
+        linewidth=3,
+        label='Patient',
+        color = 'blue'
+    )
+    plt.title('Glucose Distribution Analysis')
+    plt.xlabel('Glucose')
+    plt.ylabel('Density')
+    plt.grid(alpha = 0.3)
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig('app/static/graphs/diabetes_glucose.jpg')
+    plt.close()
+
+
+def diabetes_bmi(patient_bmi):
+    plt.figure(figsize=(10,6))
+    sns.kdeplot(
+        data = diabetes_df[diabetes_df['Outcome'] == 0],
+        x = 'BMI',
+        fill = True,
+        color = 'green',
+        label = 'Healthy'
+    )
+    sns.kdeplot(
+        data = diabetes_df[diabetes_df['Outcome'] == 1],
+        x = 'BMI',
+        fill = True,
+        color = 'red',
+        label = 'Diabetic'
+    )
+    plt.axvline(
+        patient_bmi,
+        color = 'blue',
+        linestyle = '--',
+        linewidth = 3,
+        label = 'Patient'
+    )
+    plt.title('BMI Distribution Analysis')
+    plt.xlabel('BMI')
+    plt.ylabel('Density')
+    plt.legend()
+    plt.grid(alpha=0.3)
+    plt.tight_layout()
+    plt.savefig('app/static/graphs/diabetes_bmi.jpg')
+    plt.close()
+
+def diabetes_insulin(patient_insulin):
+    plt.figure(figsize=(10,6))
+    sns.violinplot(
+        data = diabetes_df[diabetes_df['Outcome'] == 1],
+        y = 'Insulin',
+        color = 'gray',
+        inner = 'quartile'
+    )
+
+    plt.scatter(
+        0,
+        patient_insulin,
+        color = 'blue',
+        marker = 'x',
+        s = 200,
+        label = 'Patient'
+    )
+    plt.title('Diabetic Insulin Distribution')
+    plt.ylabel('Insulin')
+    plt.xticks([])
+    plt.legend()
+    plt.grid(alpha=0.3)
+    plt.tight_layout()
+    plt.savefig('app/static/graphs/diabetes_insulin.jpg')
+    plt.close()
+
+def diabetes_main(patient_values):
+    features = [
+        'Glucose',
+        'BMI',
+        'Age',
+         'DiabetesPedigreeFunction',
+        'Insulin',
+        'BloodPressure'
+    ]
+    feature_display_names = [
+        'Glucose',
+        'BMI',
+        'Age',
+        'Diabetes Pedigree Function',
+        'Insulin',
+        'Blood Pressure'
+    ]
+    importances = [
+        0.256770,
+        0.165276,
+        0.139238,
+        0.119710,
+        0.092145,
+        0.082466
+    ]
+    patient_df = pd.DataFrame([patient_values])
+    patient_Scaler = MinMaxScaler()
+    patient_Scaler.fit(diabetes_df[features])
+    normalized_patients  = patient_Scaler.transform(patient_df).flatten()
+    normalized_patients=np.clip(normalized_patients , 0 , 1)
+
+    important_scaler = MinMaxScaler()
+    normalized_coefficients = important_scaler.fit_transform(
+        np.array(importances).reshape(-1,1)
+    ).flatten()
+
+    plt.figure(figsize=(10,6))
+
+    sns.barplot(
+        x = normalized_coefficients,
+        y = feature_display_names,
+        color = 'gray',
+        alpha = 0.8,
+        label = 'Model Importance'
+    )
+
+    plt.scatter(
+        normalized_patients,
+        feature_display_names,
+        color = 'blue',
+        marker = 'x',
+        s = 200,
+        label = 'Patient Feature Strength'
+    )
+
+    plt.xlim(0,1.05)
+    plt.xlabel('Relative Importance and Patient Strength')
+    plt.title('Diabetes Model Attention vs Patient Clinical Profile')
+    plt.legend(fontsize = 13)
+    plt.grid(alpha=0.3)
+    plt.tight_layout()
+    plt.savefig('app/static/graphs/diabetes_final.jpg')
+    plt.close()
+
+def diabetes_comparison_table(patient_values):
+
+    features = [
+        'Glucose',
+        'BMI',
+        'Age',
+        'DiabetesPedigreeFunction',
+        'Insulin',
+        'BloodPressure'
+    ]
+
+    feature_display_names = [
+        'Glucose',
+        'BMI',
+        'Age',
+        'Diabetes Pedigree Function',
+        'Insulin',
+        'Blood Pressure'
+    ]
+
+    healthy_patients = diabetes_df[diabetes_df['Outcome'] == 0]
+    healthy_median = healthy_patients[features].median()
+    patient_values_list = [
+        patient_values[feature]
+        for feature in features
+    ]
+    comparison_table = pd.DataFrame({
+        'Features': feature_display_names,
+        'Healthy Median': healthy_median.values,
+        'Your Values': patient_values_list
+    })
+    comparison_table = comparison_table.round(2)
+    return comparison_table.to_dict(orient='records')
+
+
+
+
+
     
 
 

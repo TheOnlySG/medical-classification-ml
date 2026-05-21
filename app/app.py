@@ -186,9 +186,25 @@ def diabetes():
         else :
             result = "Not Diabetic"
 
+        gp.diabetes_glucose(Glucose)
+        gp.diabetes_bmi(BMI)
+        gp.diabetes_insulin(Insulin)
+        patient_values = {
+            'Glucose': Glucose,
+            'BMI': BMI,
+            'Age': Age,
+            'DiabetesPedigreeFunction': DiabetesPedigreeFunction,
+            'Insulin': Insulin,
+            'BloodPressure': BloodPressure
+        }
+        gp.diabetes_main(patient_values)
+
+        comparison_table = gp.diabetes_comparison_table(patient_values)
+
         return render_template(
             'diabetes_report.html',
-            prediction = result
+            prediction = result,
+            comparison_table = comparison_table
         )
 
     return render_template("diabetes.html")
