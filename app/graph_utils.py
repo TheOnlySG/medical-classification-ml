@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
+import numpy as np
 
 heart_df = pd.read_csv('data/heart.csv')
 
@@ -103,3 +105,104 @@ def heart_oldpeak_graph(oldpeak):
     plt.tight_layout()
     plt.savefig('app/static/graphs/heart_oldpeak.jpg')
     plt.close()
+
+
+def heart_final_graph(patient_values):
+    features = [
+        'cp',
+        'thalach',
+        'oldpeak',
+        'ca',
+        'age',
+        'thal',
+        'chol'
+    ]
+
+    feature_display_names = [
+        'Chest Pain Type',
+        'Maximum Heart Rate',
+        'ST Depression (Oldpeak)',
+        'Major Vessels',
+        'Age',
+        'Thalassemia',
+        'Cholesterol'
+    ]
+
+    importances = [
+        0.127280,
+        0.116200,
+        0.113342,
+        0.112550,
+        0.105167,
+        0.095484,
+        0.079107
+    ]
+    patient_df = pd.DataFrame([patient_values])
+    scaler = MinMaxScaler()
+    scaler.fit(heart_df[features])
+    normalized_patient = scaler.transform(patient_df).flatten()
+    normalized_patient = np.clip(normalized_patient, 0, 1)
+
+
+    importance_scaler = MinMaxScaler()
+    normalized_importances = importance_scaler.fit_transform(
+        np.array(importances).reshape(-1,1)
+    ).flatten()
+    plt.figure(figsize = (10,6))
+    sns.barplot(
+        x = normalized_importances,
+        y = feature_display_names,
+        color = 'gray',
+        alpha = 0.8,
+        label = 'Model Importance'
+    )
+    plt.scatter(
+        normalized_patient,
+        feature_display_names,
+        color = 'blue',
+        marker = 'x',
+        s = 200,
+        label = 'Patient Feature Strength'
+    )
+
+    plt.xlabel('Patient Feature Strength')
+    plt.title('Model Feature Importance vs Patient Profile')
+    plt.legend()
+    plt.grid(alpha = 0.3)
+    plt.tight_layout()
+    plt.savefig('app/static/graphs/heart_feature_importance.jpg')
+
+def heart_comparison_table(patient_values):
+    features = [
+        'cp',
+        'thalach',
+        'oldpeak',
+        'ca',
+        'age',
+        'thal',
+        'chol'
+    ]
+
+    feature_display_names = [
+        'Chest Pain Type',
+        'Maximum Heart Rate',
+        'ST Depression (Oldpeak)',
+        'Major Vessels',
+        'Age',
+        'Thalassemia',
+        'Cholesterol'
+    ]
+
+    healthy_patients = heart_df[heart_df['target'] == 0]
+    healthy_median = healthy_patients[features].median(0)
+    patient_values_list = [
+        patient_values[feature]
+        for feature in features
+    ]
+    comparison_table = pd.DataFrame({
+        'Features' : feature_display_names,
+        'Healthy Median' : healthy_median.values ,
+        'Your Values': patient_values_list
+    })
+    comparison_table = comparison_table.round(2)
+    return comparison_table.to_dict(orient='records')

@@ -1,4 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Symptisense</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  </head>
+  <body>
+    
 <h1>{{ prediction }}</h1>
 <img src="{{url_for('static' , filename = 'graphs/heart_cholesterol.jpg') }}" alt="Cholestrol Graph">
 <img src="{{url_for('static' , filename = 'graphs/heart_thalach.jpg') }}" alt="Cholestrol Graph">
 <img src="{{url_for('static' , filename = 'graphs/heart_oldpeak.jpg') }}" alt="Oldpeak Graph">
+<img src="{{url_for('static' , filename = 'graphs/heart_feature_importance.jpg') }}" alt="Importance Graph">
+
+
+
+<div class="container mt-5">
+
+    <h2 class="mb-4">Patient Health Comparison</h2>
+
+    <table class="table table-bordered table-striped table-hover">
+
+        <thead class="table-dark">
+            <tr>
+                <th>Feature</th>
+                <th>Healthy Median</th>
+                <th>Your Value</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for row in comparison_table %}
+
+            <tr>
+                <td>{{ row['Features'] }}</td>
+                <td>{{ row['Healthy Median'] }}</td>
+                <td>{{ row['Your Values'] }}</td>
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+

@@ -72,9 +72,22 @@ def heart():
         gp.heart_thalach_graph(thalach)
         gp.heart_oldpeak_graph(oldpeak)
 
+        patient_values = {
+            'cp': cp,
+            'thalach': thalach,
+            'oldpeak': oldpeak,
+            'ca': ca,
+            'age': age,
+            'thal': thal,
+            'chol': chol
+        }
+        gp.heart_final_graph(patient_values)
+        comparison_table = gp.heart_comparison_table(patient_values)
+
         return render_template(
             'heart_report.html',
-            prediction = result
+            prediction = result,
+            comparison_table=comparison_table
         )
     
 
