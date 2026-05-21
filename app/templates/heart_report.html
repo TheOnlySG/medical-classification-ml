@@ -10,370 +10,442 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
-
-        body{
+        body {
             background-color: #f5f5f5;
             padding: 40px;
             font-family: Arial, Helvetica, sans-serif;
         }
 
-        .report-container{
+        .report-container {
             background-color: white;
-            border: 3px solid black;
-            border-radius: 0px;
+            border: 1.5px solid black;
             padding: 40px;
             max-width: 1300px;
             margin: auto;
         }
 
-        .report-header{
-            border: 2px solid black;
+        .report-header {
+            border: 1.5px solid black;
             margin-bottom: 40px;
         }
 
-        .report-title{
+        .report-title {
             text-align: center;
             font-size: 2rem;
             font-weight: bold;
             padding: 15px;
-            border-bottom: 2px solid black;
+            border-bottom: 1.5px solid black;
         }
 
-        .header-info{
+        .header-info {
             display: flex;
         }
 
-        .header-box{
+        .header-box {
             flex: 1;
             padding: 20px;
-            border-right: 2px solid black;
+            border-right: 1.5px solid black;
         }
 
-        .header-box:last-child{
+        .header-box:last-child {
             border-right: none;
         }
 
-        .section{
-            border: 2px solid black;
-            border-radius: 0px;
+        .section {
+            border: 1.5px solid black;
             padding: 25px;
             margin-bottom: 35px;
         }
 
-        .graph-image{
+        .graph-image {
             width: 100%;
-            border: 2px solid black;
-            border-radius: 0px;
+            border: 1.5px solid black;
         }
 
-        .section-title{
+        .section-title {
             font-size: 1.5rem;
             font-weight: bold;
             margin-bottom: 20px;
         }
 
-        .explanation-box{
+        .explanation-box {
             padding: 10px 20px;
         }
 
-        .final-section{
+        .final-section {
             margin-top: 40px;
         }
 
-        .table-container{
-            border: 2px solid black;
-            border-radius: 0px;
+        .table-container {
+            border: 1.5px solid black;
             padding: 20px;
             height: 100%;
         }
 
-        .final-graph-container{
-            border: 2px solid black;
-            border-radius: 0px;
+        .final-graph-container {
+            border: 1.5px solid black;
             padding: 20px;
             height: 100%;
         }
 
-        .footer-note{
-            border-top: 2px solid black;
+        .footer-note {
+            border-top: 1.5px solid black;
             margin-top: 40px;
             padding-top: 20px;
             text-align: center;
             font-size: 0.9rem;
+            font-style: italic;
+            color: #555;
         }
 
+        @media print {
+
+            body{
+                background-color: white;
+                padding: 0;
+            }
+
+            .report-container{
+                border: none;
+                padding: 0;
+                max-width: 100%;
+            }
+
+            .no-print,
+            .no-print *{
+                display: none !important;
+            }
+
+            .section,
+            .table-container,
+            .final-graph-container{
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            img{
+                max-width: 100%;
+            }
+
+        }
     </style>
 
 </head>
 
 <body>
 
-<div class="report-container">
+    <div class="report-container">
 
-    <!-- HEADER -->
+        <div class="report-header">
 
-    <div class="report-header">
-
-        <div class="report-title">
-            Heart Disease Analysis Report
-        </div>
-
-        <div class="header-info">
-
-            <div class="header-box">
-                <h5>Patient Name</h5>
-                <p>{{ patient_name }}</p>
+            <div class="report-title">
+                Heart Disease Analysis Report
             </div>
 
-            <div class="header-box">
-                <h5>Prediction</h5>
-                <p>{{ prediction }}</p>
+            <div class="header-info">
+
+                <div class="header-box">
+                    <h5>Patient Name</h5>
+                    <p>{{ patient_name }}</p>
+                </div>
+
+                <div class="header-box">
+                    <h5>Prediction</h5>
+                    <p class="fw-bold fs-4">{{ prediction }}</p>
+                </div>
+
             </div>
 
         </div>
 
-    </div>
+        <div class="section">
 
-    <div class="section">
+            <div class="row align-items-center">
 
-        <div class="row align-items-center">
+                <div class="col-md-5">
+
+                    <img src="{{url_for('static' , filename = 'graphs/heart_cholesterol.jpg') }}" class="graph-image">
+
+                </div>
+
+                <div class="col-md-7 explanation-box">
+
+                    <h3 class="section-title">
+                        Cholesterol Distribution Analysis
+                    </h3>
+
+                    <p>
+                        This graph compares the patient's cholesterol level against
+                        healthy and heart disease populations.
+                    </p>
+
+                    <ul>
+
+                        <li>
+                            Green distribution represents healthy patients.
+                        </li>
+
+                        <li>
+                            Red distribution represents heart disease patients.
+                        </li>
+
+                        <li>
+                            Blue line indicates the patient's cholesterol measurement.
+                        </li>
+
+                        <li>
+                            Higher cholesterol levels may indicate increased cardiovascular risk.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="section">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-5">
+
+                    <img src="{{url_for('static' , filename = 'graphs/heart_thalach.jpg') }}" class="graph-image">
+
+                </div>
+
+                <div class="col-md-7 explanation-box">
+
+                    <h3 class="section-title">
+                        Maximum Heart Rate Analysis
+                    </h3>
+
+                    <p>
+                        This visualization compares the patient's maximum heart rate
+                        against healthy and heart disease populations.
+                    </p>
+
+                    <ul>
+
+                        <li>
+                            Distribution spread represents population variability.
+                        </li>
+
+                        <li>
+                            Blue marker represents the patient's relative position.
+                        </li>
+
+                        <li>
+                            Abnormal positioning may indicate cardiovascular stress.
+                        </li>
+
+                        <li>
+                            Lower maximum heart rates are often associated with heart disease risk.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="section">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-5">
+
+                    <img src="{{url_for('static' , filename = 'graphs/heart_oldpeak.jpg') }}" class="graph-image">
+
+                </div>
+
+                <div class="col-md-7 explanation-box">
+
+                    <h3 class="section-title">
+                        ST Depression (Oldpeak) Analysis
+                    </h3>
+
+                    <p>
+                        Oldpeak measures exercise-induced ST depression,
+                        an important indicator in heart disease analysis.
+                    </p>
+
+                    <ul>
+
+                        <li>
+                            Higher oldpeak values may indicate cardiac stress.
+                        </li>
+
+                        <li>
+                            Blue line represents the patient's measurement.
+                        </li>
+
+                        <li>
+                            Distribution comparison helps estimate abnormality.
+                        </li>
+
+                        <li>
+                            Elevated values may contribute more strongly toward heart disease prediction.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row final-section">
 
             <div class="col-md-5">
 
-                <img
-                    src="{{url_for('static' , filename = 'graphs/heart_cholesterol.jpg') }}"
-                    class="graph-image"
-                >
+                <div class="table-container">
+
+                    <h3 class="section-title">
+                        Patient Health Comparison
+                    </h3>
+
+                    <table class="table table-bordered">
+
+                        <thead class="table-dark">
+
+                            <tr>
+                                <th>Feature</th>
+                                <th>Healthy Median</th>
+                                <th>Your Value</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            {% for row in comparison_table %}
+
+                            <tr>
+                                <td>{{ row['Features'] }}</td>
+                                <td>{{ row['Healthy Median'] }}</td>
+                                <td>{{ row['Your Values'] }}</td>
+                            </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                    <div class="mt-4">
+
+                        <h5>How to Read This Table</h5>
+
+                        <ul>
+
+                            <li>
+                                Healthy Median represents the median value observed among healthy patients in the
+                                dataset.
+                            </li>
+
+                            <li>
+                                Your Value represents the patient's submitted clinical measurement.
+                            </li>
+
+                            <li>
+                                Large deviations from healthy median values may indicate elevated cardiovascular risk.
+                            </li>
+
+                            <li>
+                                This comparison highlights which clinical features differ most significantly from
+                                healthy population patterns.
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
 
             </div>
 
-            <div class="col-md-7 explanation-box">
+            <div class="col-md-7">
 
-                <h3 class="section-title">Cholesterol Distribution Analysis</h3>
+                <div class="final-graph-container">
 
-                <p>
-                    This graph compares the patient's cholesterol level against
-                    healthy and heart disease populations.
-                </p>
+                    <h3 class="section-title">
+                        AI Attention vs Patient Profile
+                    </h3>
 
-                <ul>
-                    <li>Green region represents healthy patients.</li>
-                    <li>Red region represents heart disease patients.</li>
-                    <li>Blue line indicates patient cholesterol value.</li>
-                </ul>
+                    <img src="{{url_for('static' , filename = 'graphs/heart_feature_importance.jpg') }}"
+                        class="graph-image">
 
-                <p>
-                    If the patient marker lies closer to the red distribution,
-                    it may indicate elevated cardiovascular risk.
-                </p>
+                    <p class="mt-3">
+
+                        This graph explains how the AI model analyzed the patient's clinical profile.
+
+                    </p>
+
+                    <ul>
+
+                        <li>
+                            Gray bars represent how important each feature was during prediction.
+                        </li>
+
+                        <li>
+                            Blue X markers represent the patient's relative feature strengths.
+                        </li>
+
+                        <li>
+                            Features with larger bars had greater influence on the AI model's decision.
+                        </li>
+
+                        <li>
+                            Patient markers positioned toward higher values on important features
+                            may contribute more strongly toward heart disease prediction.
+                        </li>
+
+                        <li>
+                            This visualization improves interpretability by explaining
+                            which clinical measurements affected the analysis most significantly.
+                        </li>
+
+                    </ul>
+
+                </div>
 
             </div>
 
         </div>
 
-    </div>
+<div class="d-flex justify-content-center gap-4 mt-5 no-print">
 
+    <button
+        class="btn btn-dark px-4 py-2"
+        onclick="window.print()"
+    >
+        Download Report
+    </button>
 
-    <div class="section">
-
-        <div class="row align-items-center">
-
-            <div class="col-md-5">
-
-                <img
-                    src="{{url_for('static' , filename = 'graphs/heart_thalach.jpg') }}"
-                    class="graph-image"
-                >
-
-            </div>
-
-            <div class="col-md-7 explanation-box">
-
-                <h3 class="section-title">Maximum Heart Rate Analysis</h3>
-
-                <p>
-                    This visualization compares the patient's maximum heart rate
-                    against healthy and heart disease populations.
-                </p>
-
-                <ul>
-                    <li>Distribution spread shows population variation.</li>
-                    <li>Blue marker represents patient position.</li>
-                    <li>Outlier positioning may indicate abnormal cardiac behavior.</li>
-                </ul>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="section">
-
-        <div class="row align-items-center">
-
-            <div class="col-md-5">
-
-                <img
-                    src="{{url_for('static' , filename = 'graphs/heart_oldpeak.jpg') }}"
-                    class="graph-image"
-                >
-
-            </div>
-
-            <div class="col-md-7 explanation-box">
-
-                <h3 class="section-title">ST Depression (Oldpeak) Analysis</h3>
-
-                <p>
-                    Oldpeak measures exercise-induced ST depression,
-                    an important indicator in heart disease analysis.
-                </p>
-
-                <ul>
-                    <li>Higher values may indicate cardiac stress.</li>
-                    <li>Blue line represents patient measurement.</li>
-                    <li>Distribution comparison helps estimate abnormality.</li>
-                </ul>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="row final-section">
-
-
-        <div class="col-md-5">
-
-            <div class="table-container">
-
-                <h3 class="section-title">
-                    Patient Health Comparison
-                </h3>
-
-                <table class="table table-bordered">
-
-                    <thead class="table-dark">
-
-                        <tr>
-                            <th>Feature</th>
-                            <th>Healthy Median</th>
-                            <th>Your Value</th>
-                        </tr>
-
-                    </thead>
-
-                    <tbody>
-
-                        {% for row in comparison_table %}
-
-                        <tr>
-                            <td>{{ row['Features'] }}</td>
-                            <td>{{ row['Healthy Median'] }}</td>
-                            <td>{{ row['Your Values'] }}</td>
-                        </tr>
-
-                        {% endfor %}
-
-                    </tbody>
-
-                </table>
-                <div class="mt-4">
-
-    <h5>How to Read This Table</h5>
-
-    <ul>
-
-        <li>
-            Healthy Median represents the median value observed among healthy patients in the dataset.
-        </li>
-
-        <li>
-            Your Value represents the patient's submitted clinical measurement.
-        </li>
-
-        <li>
-            Large deviations from healthy median values may indicate elevated cardiovascular risk.
-        </li>
-
-        <li>
-            This comparison helps identify which clinical features differ most significantly from normal population patterns.
-        </li>
-
-    </ul>
+    <a
+        href="/"
+        class="btn btn-outline-dark px-4 py-2"
+    >
+        Start Over
+    </a>
 
 </div>
 
-            </div>
+        <div class="footer-note">
 
-        </div>
-
-        <div class="col-md-7">
-
-            <div class="final-graph-container">
-
-                <h3 class="section-title">
-                    AI Attention vs Patient Profile
-                </h3>
-
-                <img
-                    src="{{url_for('static' , filename = 'graphs/heart_feature_importance.jpg') }}"
-                    class="graph-image"
-                >
-
-                <p class="mt-3">
-
-    This graph explains how the AI model analyzed the patient's clinical profile.
-
-</p>
-
-<ul>
-
-    <li>
-        Gray bars represent how important each feature is to the AI model while predicting heart disease.
-    </li>
-
-    <li>
-        Blue X markers represent the patient's relative position for each clinical feature.
-    </li>
-
-    <li>
-        Features with larger gray bars had stronger influence on the AI's decision.
-    </li>
-
-    <li>
-        If the patient's marker lies toward the higher end of an important feature,
-        that feature likely contributed more strongly to the prediction.
-    </li>
-
-    <li>
-        This visualization helps interpret which medical measurements affected
-        the model's analysis most significantly.
-    </li>
-
-</ul>
-
-            </div>
+            This report is AI-assisted and generated by SymptiSense.
+            It should not replace professional medical consultation.
 
         </div>
 
     </div>
 
-    <!-- FOOTER -->
-
-    <div class="footer-note">
-
-        This report is AI-assisted and generated by SymptiSense.
-        It should not replace professional medical consultation.
-
-    </div>
-
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

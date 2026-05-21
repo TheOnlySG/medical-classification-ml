@@ -10,14 +10,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
-
-        body{
+        body {
             background-color: #f5f5f5;
             padding: 40px;
             font-family: Arial, Helvetica, sans-serif;
         }
 
-        .report-container{
+        .report-container {
             background-color: white;
             border: 1.5px solid black;
             padding: 40px;
@@ -25,12 +24,12 @@
             margin: auto;
         }
 
-        .report-header{
+        .report-header {
             border: 1.5px solid black;
             margin-bottom: 40px;
         }
 
-        .report-title{
+        .report-title {
             text-align: center;
             font-size: 2rem;
             font-weight: bold;
@@ -38,58 +37,58 @@
             border-bottom: 1.5px solid black;
         }
 
-        .header-info{
+        .header-info {
             display: flex;
         }
 
-        .header-box{
+        .header-box {
             flex: 1;
             padding: 20px;
             border-right: 1.5px solid black;
         }
 
-        .header-box:last-child{
+        .header-box:last-child {
             border-right: none;
         }
 
-        .section{
+        .section {
             border: 1.5px solid black;
             padding: 25px;
             margin-bottom: 35px;
         }
 
-        .graph-image{
+        .graph-image {
             width: 100%;
             border: 1.5px solid black;
         }
 
-        .section-title{
+        .section-title {
             font-size: 1.5rem;
             font-weight: bold;
             margin-bottom: 20px;
         }
 
-        .explanation-box{
+        .explanation-box {
             padding: 10px 20px;
         }
 
-        .final-section{
+        .final-section {
             margin-top: 40px;
         }
 
-        .table-container{
+        .table-container {
             border: 1.5px solid black;
             padding: 20px;
             height: 100%;
         }
 
-        .final-graph-container{
+        .final-graph-container {
             border: 1.5px solid black;
             padding: 20px;
             height: 100%;
         }
 
-        .footer-note{
+        .footer-note {
             border-top: 1.5px solid black;
             margin-top: 40px;
             padding-top: 20px;
@@ -99,249 +98,108 @@
             color: #555;
         }
 
+        @media print {
+
+            body {
+                background-color: white;
+                padding: 0;
+            }
+
+            .report-container {
+                border: none;
+                padding: 0;
+                max-width: 100%;
+            }
+
+            .no-print,
+            .no-print * {
+                display: none !important;
+            }
+
+            .section,
+            .table-container,
+            .final-graph-container {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            img {
+                max-width: 100%;
+            }
+
+        }
     </style>
 
 </head>
 
 <body>
 
-<div class="report-container">
+    <div class="report-container">
 
-    <!-- HEADER -->
+        <!-- HEADER -->
 
-    <div class="report-header">
+        <div class="report-header">
 
-        <div class="report-title">
-            Breast Cancer Analysis Report
-        </div>
-
-        <div class="header-info">
-
-            <div class="header-box">
-                <h5>Patient Name</h5>
-                <p>{{ patient_name }}</p>
+            <div class="report-title">
+                Breast Cancer Analysis Report
             </div>
 
-            <div class="header-box">
-                <h5>Prediction</h5>
-                <p class="fw-bold fs-4">{{ prediction }}</p>
-            </div>
+            <div class="header-info">
 
-        </div>
+                <div class="header-box">
+                    <h5>Patient Name</h5>
+                    <p>{{ patient_name }}</p>
+                </div>
 
-    </div>
-
-    <!-- GRAPH 1 -->
-
-    <div class="section">
-
-        <div class="row align-items-center">
-
-            <div class="col-md-5">
-
-                <img
-                    src="{{ url_for('static' , filename='graphs/cancer_radius_worst.jpg') }}"
-                    class="graph-image"
-                >
-
-            </div>
-
-            <div class="col-md-7 explanation-box">
-
-                <h3 class="section-title">
-                    Radius Worst Distribution Analysis
-                </h3>
-
-                <p>
-                    This graph compares the patient’s worst radius measurement
-                    against benign and malignant tumor populations.
-                </p>
-
-                <ul>
-
-                    <li>
-                        Green distribution represents benign tumor cases.
-                    </li>
-
-                    <li>
-                        Red distribution represents malignant tumor cases.
-                    </li>
-
-                    <li>
-                        Blue marker indicates the patient's measurement.
-                    </li>
-
-                    <li>
-                        Larger radius measurements are commonly associated with
-                        malignant tumors.
-                    </li>
-
-                </ul>
+                <div class="header-box">
+                    <h5>Prediction</h5>
+                    <p class="fw-bold fs-4">{{ prediction }}</p>
+                </div>
 
             </div>
 
         </div>
 
-    </div>
+        <!-- GRAPH 1 -->
 
-    <!-- GRAPH 2 -->
+        <div class="section">
 
-    <div class="section">
+            <div class="row align-items-center">
 
-        <div class="row align-items-center">
+                <div class="col-md-5">
 
-            <div class="col-md-5">
+                    <img src="{{ url_for('static' , filename='graphs/cancer_radius_worst.jpg') }}" class="graph-image">
 
-                <img
-                    src="{{ url_for('static' , filename='graphs/cancer_concave_worst.jpg') }}"
-                    class="graph-image"
-                >
+                </div>
 
-            </div>
+                <div class="col-md-7 explanation-box">
 
-            <div class="col-md-7 explanation-box">
+                    <h3 class="section-title">
+                        Radius Worst Distribution Analysis
+                    </h3>
 
-                <h3 class="section-title">
-                    Concave Points Analysis
-                </h3>
-
-                <p>
-                    Concave points describe irregularities in tumor boundaries,
-                    which are important indicators in cancer diagnosis.
-                </p>
-
-                <ul>
-
-                    <li>
-                        Higher concave point values may indicate more abnormal cell structures.
-                    </li>
-
-                    <li>
-                        Distribution comparison helps estimate malignancy risk.
-                    </li>
-
-                    <li>
-                        Blue patient marker shows relative positioning among the dataset population.
-                    </li>
-
-                </ul>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- GRAPH 3 -->
-
-    <div class="section">
-
-        <div class="row align-items-center">
-
-            <div class="col-md-5">
-
-                <img
-                    src="{{ url_for('static' , filename='graphs/cancer_area_worst.jpg') }}"
-                    class="graph-image"
-                >
-
-            </div>
-
-            <div class="col-md-7 explanation-box">
-
-                <h3 class="section-title">
-                    Tumor Area Distribution Analysis
-                </h3>
-
-                <p>
-                    This violin plot visualizes the distribution of tumor area measurements
-                    among malignant cases.
-                </p>
-
-                <ul>
-
-                    <li>
-                        Wider regions indicate more commonly occurring measurements.
-                    </li>
-
-                    <li>
-                        Quartile markers summarize distribution spread.
-                    </li>
-
-                    <li>
-                        The blue marker indicates how extreme the patient’s measurement is compared to malignant cases.
-                    </li>
-
-                </ul>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- FINAL SECTION -->
-
-    <div class="row final-section">
-
-        <!-- TABLE -->
-
-        <div class="col-md-5">
-
-            <div class="table-container">
-
-                <h3 class="section-title">
-                    Patient Health Comparison
-                </h3>
-
-                <table class="table table-bordered">
-
-                    <thead class="table-dark">
-
-                        <tr>
-                            <th>Feature</th>
-                            <th>Healthy Median</th>
-                            <th>Your Value</th>
-                        </tr>
-
-                    </thead>
-
-                    <tbody>
-
-                        {% for row in comparison_table %}
-
-                        <tr>
-                            <td>{{ row['Features'] }}</td>
-                            <td>{{ row['Healthy Median'] }}</td>
-                            <td>{{ row['Your Values'] }}</td>
-                        </tr>
-
-                        {% endfor %}
-
-                    </tbody>
-
-                </table>
-
-                <div class="mt-4">
-
-                    <h5>How to Read This Table</h5>
+                    <p>
+                        This graph compares the patient’s worst radius measurement
+                        against benign and malignant tumor populations.
+                    </p>
 
                     <ul>
 
                         <li>
-                            Healthy Median represents typical values observed in benign tumor cases.
+                            Green distribution represents benign tumor cases.
                         </li>
 
                         <li>
-                            Your Value represents the patient's submitted clinical measurement.
+                            Red distribution represents malignant tumor cases.
                         </li>
 
                         <li>
-                            Large deviations from benign medians may indicate abnormal tumor characteristics.
+                            Blue marker indicates the patient's measurement.
                         </li>
 
                         <li>
-                            This comparison highlights which tumor measurements differ most significantly from healthy patterns.
+                            Larger radius measurements are commonly associated with
+                            malignant tumors.
                         </li>
 
                     </ul>
@@ -352,71 +210,242 @@
 
         </div>
 
-        <!-- FINAL GRAPH -->
+        <!-- GRAPH 2 -->
 
-        <div class="col-md-7">
+        <div class="section">
 
-            <div class="final-graph-container">
+            <div class="row align-items-center">
 
-                <h3 class="section-title">
-                    AI Attention vs Patient Profile
-                </h3>
+                <div class="col-md-5">
 
-                <img
-                    src="{{ url_for('static' , filename='graphs/cancer_final.jpg') }}"
-                    class="graph-image"
-                >
+                    <img src="{{ url_for('static' , filename='graphs/cancer_concave_worst.jpg') }}" class="graph-image">
 
-                <p class="mt-3">
+                </div>
 
-                    This graph explains how the AI model analyzed the patient's tumor profile.
+                <div class="col-md-7 explanation-box">
 
-                </p>
+                    <h3 class="section-title">
+                        Concave Points Analysis
+                    </h3>
 
-                <ul>
+                    <p>
+                        Concave points describe irregularities in tumor boundaries,
+                        which are important indicators in cancer diagnosis.
+                    </p>
 
-                    <li>
-                        Gray bars represent how important each feature was during prediction.
-                    </li>
+                    <ul>
 
-                    <li>
-                        Blue X markers represent the patient's relative feature strengths.
-                    </li>
+                        <li>
+                            Higher concave point values may indicate more abnormal cell structures.
+                        </li>
 
-                    <li>
-                        Features with larger bars had greater influence on the AI model's decision.
-                    </li>
+                        <li>
+                            Distribution comparison helps estimate malignancy risk.
+                        </li>
 
-                    <li>
-                        Patient markers positioned toward higher values on important features
-                        may contribute more strongly toward malignancy prediction.
-                    </li>
+                        <li>
+                            Blue patient marker shows relative positioning among the dataset population.
+                        </li>
 
-                    <li>
-                        This visualization improves interpretability by explaining
-                        which clinical measurements affected the analysis most significantly.
-                    </li>
+                    </ul>
 
-                </ul>
+                </div>
 
             </div>
 
         </div>
 
+        <!-- GRAPH 3 -->
+
+        <div class="section">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-5">
+
+                    <img src="{{ url_for('static' , filename='graphs/cancer_area_worst.jpg') }}" class="graph-image">
+
+                </div>
+
+                <div class="col-md-7 explanation-box">
+
+                    <h3 class="section-title">
+                        Tumor Area Distribution Analysis
+                    </h3>
+
+                    <p>
+                        This violin plot visualizes the distribution of tumor area measurements
+                        among malignant cases.
+                    </p>
+
+                    <ul>
+
+                        <li>
+                            Wider regions indicate more commonly occurring measurements.
+                        </li>
+
+                        <li>
+                            Quartile markers summarize distribution spread.
+                        </li>
+
+                        <li>
+                            The blue marker indicates how extreme the patient’s measurement is compared to malignant
+                            cases.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- FINAL SECTION -->
+
+        <div class="row final-section">
+
+            <!-- TABLE -->
+
+            <div class="col-md-5">
+
+                <div class="table-container">
+
+                    <h3 class="section-title">
+                        Patient Health Comparison
+                    </h3>
+
+                    <table class="table table-bordered">
+
+                        <thead class="table-dark">
+
+                            <tr>
+                                <th>Feature</th>
+                                <th>Healthy Median</th>
+                                <th>Your Value</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            {% for row in comparison_table %}
+
+                            <tr>
+                                <td>{{ row['Features'] }}</td>
+                                <td>{{ row['Healthy Median'] }}</td>
+                                <td>{{ row['Your Values'] }}</td>
+                            </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                    <div class="mt-4">
+
+                        <h5>How to Read This Table</h5>
+
+                        <ul>
+
+                            <li>
+                                Healthy Median represents typical values observed in benign tumor cases.
+                            </li>
+
+                            <li>
+                                Your Value represents the patient's submitted clinical measurement.
+                            </li>
+
+                            <li>
+                                Large deviations from benign medians may indicate abnormal tumor characteristics.
+                            </li>
+
+                            <li>
+                                This comparison highlights which tumor measurements differ most significantly from
+                                healthy patterns.
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- FINAL GRAPH -->
+
+            <div class="col-md-7">
+
+                <div class="final-graph-container">
+
+                    <h3 class="section-title">
+                        AI Attention vs Patient Profile
+                    </h3>
+
+                    <img src="{{ url_for('static' , filename='graphs/cancer_final.jpg') }}" class="graph-image">
+
+                    <p class="mt-3">
+
+                        This graph explains how the AI model analyzed the patient's tumor profile.
+
+                    </p>
+
+                    <ul>
+
+                        <li>
+                            Gray bars represent how important each feature was during prediction.
+                        </li>
+
+                        <li>
+                            Blue X markers represent the patient's relative feature strengths.
+                        </li>
+
+                        <li>
+                            Features with larger bars had greater influence on the AI model's decision.
+                        </li>
+
+                        <li>
+                            Patient markers positioned toward higher values on important features
+                            may contribute more strongly toward malignancy prediction.
+                        </li>
+
+                        <li>
+                            This visualization improves interpretability by explaining
+                            which clinical measurements affected the analysis most significantly.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="d-flex justify-content-center gap-4 mt-5 no-print">
+
+            <button class="btn btn-dark px-4 py-2" onclick="window.print()">
+                Download Report
+            </button>
+
+            <a href="/" class="btn btn-outline-dark px-4 py-2">
+                Start Over
+            </a>
+
+        </div>
+
+        <div class="footer-note">
+
+            This report is AI-assisted and generated by SymptiSense.
+            It should not replace professional medical consultation.
+
+        </div>
+
     </div>
 
-    <!-- FOOTER -->
-
-    <div class="footer-note">
-
-        This report is AI-assisted and generated by SymptiSense.
-        It should not replace professional medical consultation.
-
-    </div>
-
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

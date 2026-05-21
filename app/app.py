@@ -1,6 +1,6 @@
 from flask import Flask , render_template , request
 import joblib
-import numpy as np
+from weasyprint import HTML
 import pandas as pd
 import graph_utils as gp
 
@@ -212,7 +212,27 @@ def diabetes():
 
     return render_template("diabetes.html")
 
+@app.route('/download-heart-report')
+def download_heart_report():
+
+    rendered = render_template(
+        'heart_report.html',
+        prediction = result,
+        comparison_table = comparison_table,
+        patient_name = name
+    )
+
+    pdf = HTML(string=rendered).write_pdf()
+
+    response = make_response(pdf)
+
+    response.headers['Content-Type'] = 'application/pdf'
+    response.headers['Content-Disposition'] = 'attachment; filename=heart_report.pdf'
+
+    return response
+
 
 
 if __name__ == "__main__":
+
     app.run(debug=True)
