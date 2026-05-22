@@ -1,8 +1,8 @@
 from flask import Flask , render_template , request
 import joblib
-from weasyprint import HTML
+import numpy as np
 import pandas as pd
-import graph_utils as gp
+from app import graph_utils as gp
 
 
 #creating a flask app
@@ -64,13 +64,15 @@ def heart():
         prediction = heart_model.predict(scaled_input)
 
         if prediction[0] == 1:
-            result = ('has a heart disease')
+            result = ('Heart Risk Detected')
         else :
-            result = ("does not have a heart disease")
+            result = ("Heart Is Healthy")
 
-        gp.heart_chol_graph(chol)
-        gp.heart_thalach_graph(thalach)
-        gp.heart_oldpeak_graph(oldpeak)
+        gp.cleanup_old_graphs()
+
+        chol_graph = gp.heart_chol_graph(chol)
+        thalach_graph = gp.heart_thalach_graph(thalach)
+        oldpeak_graph = gp.heart_oldpeak_graph(oldpeak)
 
         patient_values = {
             'cp': cp,
@@ -81,14 +83,20 @@ def heart():
             'thal': thal,
             'chol': chol
         }
-        gp.heart_final_graph(patient_values)
+
+        heart_final = gp.heart_final_graph(patient_values)
         comparison_table = gp.heart_comparison_table(patient_values)
 
         return render_template(
             'heart_report.html',
             prediction = result,
             comparison_table=comparison_table,
-            patient_name = name
+            patient_name = name,
+
+            chol_graph = chol_graph,
+            thalach_graph = thalach_graph,
+            oldpeak_graph = oldpeak_graph,
+            heart_final = heart_final
         )
     
 
@@ -132,9 +140,11 @@ def cancer():
         else:
             result = 'Benign / dosent has cancer'
 
-        gp.cancer_radius_worst(radius_worst)
-        gp.cancer_concave_worst(concave_points_worst)
-        gp.cancer_area_worst(area_worst)
+        gp.cleanup_old_graphs()
+
+        cancer_radius_worst = gp.cancer_radius_worst(radius_worst)
+        cancer_concave_worst = gp.cancer_concave_worst(concave_points_worst)
+        cancer_area_worst = gp.cancer_area_worst(area_worst)
         
         patient_values = {
             'radius_worst': radius_worst,
@@ -144,14 +154,19 @@ def cancer():
             'concave points_mean': concave_points_mean,
             'perimeter_worst': perimeter_worst
         }
-        gp.cancer_final(patient_values)
+        cancer_final = gp.cancer_final(patient_values)
         comparison_table = gp.cancer_comparison_table(patient_values)
             
         return render_template(
             'cancer_report.html',
             prediction = result,
             comparison_table = comparison_table,
-            patient_name = name
+            patient_name = name,
+
+            cancer_radius_worst = cancer_radius_worst,
+            cancer_concave_worst = cancer_concave_worst,
+            cancer_area_worst = cancer_area_worst,
+            cancer_final = cancer_final
         )
     return render_template("cancer.html")
 
@@ -188,9 +203,11 @@ def diabetes():
         else :
             result = "Not Diabetic"
 
-        gp.diabetes_glucose(Glucose)
-        gp.diabetes_bmi(BMI)
-        gp.diabetes_insulin(Insulin)
+        gp.cleanup_old_graphs()
+
+        diabetes_glucose = gp.diabetes_glucose(Glucose)
+        diabetes_bmi = gp.diabetes_bmi(BMI)
+        diabetes_insulin = gp.diabetes_insulin(Insulin)
         patient_values = {
             'Glucose': Glucose,
             'BMI': BMI,
@@ -199,7 +216,7 @@ def diabetes():
             'Insulin': Insulin,
             'BloodPressure': BloodPressure
         }
-        gp.diabetes_main(patient_values)
+        diabetes_main = gp.diabetes_main(patient_values)
 
         comparison_table = gp.diabetes_comparison_table(patient_values)
 
@@ -207,32 +224,21 @@ def diabetes():
             'diabetes_report.html',
             prediction = result,
             comparison_table = comparison_table,
-            patient_name = name
+            patient_name = name,
+
+            diabetes_glucose = diabetes_glucose,
+            diabetes_bmi = diabetes_bmi,
+            diabetes_insulin = diabetes_insulin,
+            diabetes_main = diabetes_main
         )
 
     return render_template("diabetes.html")
 
-@app.route('/download-heart-report')
-def download_heart_report():
 
-    rendered = render_template(
-        'heart_report.html',
-        prediction = result,
-        comparison_table = comparison_table,
-        patient_name = name
-    )
-
-    pdf = HTML(string=rendered).write_pdf()
-
-    response = make_response(pdf)
-
-    response.headers['Content-Type'] = 'application/pdf'
-    response.headers['Content-Disposition'] = 'attachment; filename=heart_report.pdf'
-
-    return response
-
+@app.route('/input-guide')
+def input_guide():
+    return render_template('guide.html')
 
 
 if __name__ == "__main__":
-
     app.run(debug=True)

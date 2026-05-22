@@ -1,0 +1,937 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SymptoSense - Input Guide</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f4fff6;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: #2c3e35;
+        }
+
+        .hero-section {
+            padding: 90px 0 50px 0;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 18px;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            color: #5f6f67;
+            font-size: 1.12rem;
+            max-width: 850px;
+            line-height: 1.8;
+        }
+
+        .section-card {
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(25, 135, 84, 0.12);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 45px;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .section-subtitle {
+            color: #5f6f67;
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+
+        .table {
+            margin-bottom: 0;
+        }
+
+        .table thead {
+            background-color: #198754;
+            color: white;
+        }
+
+        .table thead th {
+            border: none;
+            padding: 18px;
+            font-size: 1rem;
+        }
+
+        .table tbody td {
+            padding: 18px;
+            vertical-align: middle;
+            line-height: 1.7;
+            color: #45524c;
+        }
+
+        .table tbody tr {
+            background-color: rgba(255, 255, 255, 0.85);
+        }
+
+        .table tbody tr:not(:last-child) {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .footer {
+            text-align: center;
+            color: #6c757d;
+            padding: 20px 0 40px 0;
+            font-size: 0.95rem;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 10px;
+            background-color: #198754;
+            color: white;
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 40px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .back-btn:hover {
+            background-color: #146c43;
+        }
+
+        @media(max-width: 768px) {
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .section-card {
+                padding: 25px;
+            }
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <section class="hero-section">
+
+            <h1 class="hero-title">
+                Clinical Input Guide
+            </h1>
+
+            <p class="hero-subtitle">
+
+                This guide explains the medical input parameters used in SymptoSense.
+                Each table contains parameter descriptions along with commonly accepted
+                healthy and unhealthy ranges to help users better understand the report forms.
+
+            </p>
+
+        </section>
+
+        <div class="section-card" id = "heart">
+
+            <h2 class="section-title">
+                Heart Disease Inputs
+            </h2>
+
+            <p class="section-subtitle">
+
+                Cardiovascular metrics used for heart disease prediction and risk estimation.
+
+            </p>
+
+            <div class="table-responsive">
+
+                <table class="table align-middle">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Parameter
+                            </th>
+
+                            <th>
+                                Description
+                            </th>
+
+                            <th>
+                                Healthy Range
+                            </th>
+
+                            <th>
+                                Unhealthy / Risk Range
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                Age
+                            </td>
+
+                            <td>
+                                Age of the patient in years.
+                            </td>
+
+                            <td>
+                                Lower age with stable cardiovascular indicators
+                            </td>
+
+                            <td>
+                                Heart disease risk generally increases with age
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Sex
+                            </td>
+
+                            <td>
+                                Biological sex of the patient used in cardiovascular risk analysis.
+                            </td>
+
+                            <td>
+                                No direct unhealthy value
+                            </td>
+
+                            <td>
+                                Certain heart disease risks differ statistically between sexes
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Chest Pain Type (cp)
+                            </td>
+
+                            <td>
+                                Type of chest pain experienced by the patient.
+                            </td>
+
+                            <td>
+                                Typical or non-severe chest discomfort
+                            </td>
+
+                            <td>
+                                Severe or exercise-induced chest pain may indicate cardiovascular disease
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Resting Blood Pressure (trestbps)
+                            </td>
+
+                            <td>
+                                Blood pressure measured while the patient is at rest.
+                            </td>
+
+                            <td>
+                                Around 90-120 mmHg systolic
+                            </td>
+
+                            <td>
+                                High resting blood pressure may indicate hypertension-related risk
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Cholesterol (chol)
+                            </td>
+
+                            <td>
+                                Serum cholesterol level measured in mg/dL.
+                            </td>
+
+                            <td>
+                                Below 200 mg/dL
+                            </td>
+
+                            <td>
+                                High cholesterol increases cardiovascular disease risk
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Fasting Blood Sugar (fbs)
+                            </td>
+
+                            <td>
+                                Blood sugar level measured after fasting.
+                            </td>
+
+                            <td>
+                                Below 120 mg/dL
+                            </td>
+
+                            <td>
+                                Elevated fasting blood sugar may indicate metabolic complications
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Resting ECG (restecg)
+                            </td>
+
+                            <td>
+                                Results of the resting electrocardiographic test.
+                            </td>
+
+                            <td>
+                                Normal ECG readings
+                            </td>
+
+                            <td>
+                                Abnormal ECG patterns may indicate heart abnormalities
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Maximum Heart Rate (thalach)
+                            </td>
+
+                            <td>
+                                Highest heart rate achieved during physical activity testing.
+                            </td>
+
+                            <td>
+                                Healthy exercise response
+                            </td>
+
+                            <td>
+                                Abnormally low maximum heart rate may indicate cardiovascular issues
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Exercise Induced Angina (exang)
+                            </td>
+
+                            <td>
+                                Whether chest pain occurs during exercise.
+                            </td>
+
+                            <td>
+                                No exercise-induced chest pain
+                            </td>
+
+                            <td>
+                                Presence of angina during exercise may indicate reduced blood flow
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Oldpeak
+                            </td>
+
+                            <td>
+                                ST depression caused by exercise relative to rest.
+                            </td>
+
+                            <td>
+                                Low ST depression values
+                            </td>
+
+                            <td>
+                                Higher values may indicate abnormal cardiac stress response
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Slope
+                            </td>
+
+                            <td>
+                                Slope of the peak exercise ST segment.
+                            </td>
+
+                            <td>
+                                Normal upward slope patterns
+                            </td>
+
+                            <td>
+                                Flat or downward slopes may indicate heart disease
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Number of Major Vessels (ca)
+                            </td>
+
+                            <td>
+                                Number of major blood vessels visible during fluoroscopy.
+                            </td>
+
+                            <td>
+                                Lower vessel obstruction count
+                            </td>
+
+                            <td>
+                                Higher vessel blockage count strongly correlates with heart disease
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Thal
+                            </td>
+
+                            <td>
+                                Result of thalassemia-related cardiac stress testing.
+                            </td>
+
+                            <td>
+                                Normal blood flow patterns
+                            </td>
+
+                            <td>
+                                Reversible or fixed defects may indicate cardiovascular abnormalities
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+        <div class="section-card" id = "tumor">
+
+            <h2 class="section-title">
+                Tumor Analysis Inputs
+            </h2>
+
+            <p class="section-subtitle">
+
+                Clinical tumor measurement features used in ML-based tumor classification.
+
+            </p>
+
+            <div class="table-responsive">
+
+                <table class="table align-middle">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Parameter
+                            </th>
+
+                            <th>
+                                Description
+                            </th>
+
+                            <th>
+                                Healthy Range
+                            </th>
+
+                            <th>
+                                Unhealthy / Risk Range
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                Radius Mean
+                            </td>
+
+                            <td>
+                                Average distance from the center of the tumor to its outer edge.
+                            </td>
+
+                            <td>
+                                Smaller and regular radius values
+                            </td>
+
+                            <td>
+                                Larger radius values may indicate abnormal tumor growth
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Texture Mean
+                            </td>
+
+                            <td>
+                                Variation in gray-scale intensity within the tumor image.
+                            </td>
+
+                            <td>
+                                Smooth and uniform texture
+                            </td>
+
+                            <td>
+                                Irregular texture patterns may indicate malignancy
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Perimeter Mean
+                            </td>
+
+                            <td>
+                                Average perimeter length of the tumor boundary.
+                            </td>
+
+                            <td>
+                                Smaller perimeter values
+                            </td>
+
+                            <td>
+                                Larger perimeter values may indicate tumor expansion
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Area Mean
+                            </td>
+
+                            <td>
+                                Average area occupied by the tumor.
+                            </td>
+
+                            <td>
+                                Lower and stable area measurements
+                            </td>
+
+                            <td>
+                                Large tumor area may indicate higher clinical concern
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Concavity Mean
+                            </td>
+
+                            <td>
+                                Measures how deeply indented the tumor boundary appears.
+                            </td>
+
+                            <td>
+                                Smooth outer boundaries
+                            </td>
+
+                            <td>
+                                Higher concavity may indicate irregular tumor shape
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Concave Points Mean
+                            </td>
+
+                            <td>
+                                Number of concave portions detected on the tumor boundary.
+                            </td>
+
+                            <td>
+                                Fewer concave points
+                            </td>
+
+                            <td>
+                                Increased concave points are commonly associated with malignant tumors
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Radius Worst
+                            </td>
+
+                            <td>
+                                Largest radius measurement observed in the tumor sample.
+                            </td>
+
+                            <td>
+                                Lower worst-case radius
+                            </td>
+
+                            <td>
+                                High worst-case radius is a strong malignancy indicator
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Perimeter Worst
+                            </td>
+
+                            <td>
+                                Largest observed tumor perimeter measurement.
+                            </td>
+
+                            <td>
+                                Smaller perimeter values
+                            </td>
+
+                            <td>
+                                Larger perimeter values may indicate aggressive tumor growth
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Area Worst
+                            </td>
+
+                            <td>
+                                Largest observed tumor area in the dataset sample.
+                            </td>
+
+                            <td>
+                                Smaller tumor area
+                            </td>
+
+                            <td>
+                                High area values are strongly associated with malignancy
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Concave Points Worst
+                            </td>
+
+                            <td>
+                                Highest number of concave boundary points observed.
+                            </td>
+
+                            <td>
+                                Smooth and less fragmented boundary
+                            </td>
+
+                            <td>
+                                High concave point values strongly correlate with malignant tumors
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+        <div class="section-card" id = "diabetes">
+
+            <h2 class="section-title">
+                Diabetes Inputs
+            </h2>
+
+            <p class="section-subtitle">
+
+                Health indicators used for diabetes prediction and metabolic risk assessment.
+
+            </p>
+
+            <div class="table-responsive">
+
+                <table class="table align-middle">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Parameter
+                            </th>
+
+                            <th>
+                                Description
+                            </th>
+
+                            <th>
+                                Healthy Range
+                            </th>
+
+                            <th>
+                                Unhealthy / Risk Range
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                Pregnancies
+                            </td>
+
+                            <td>
+                                Number of times the patient has been pregnant.
+                            </td>
+
+                            <td>
+                                Lower pregnancy count with stable glucose levels
+                            </td>
+
+                            <td>
+                                High pregnancy count combined with abnormal glucose may increase diabetes risk
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Glucose
+                            </td>
+
+                            <td>
+                                Plasma glucose concentration level in blood.
+                            </td>
+
+                            <td>
+                                Around 70–99 mg/dL while fasting
+                            </td>
+
+                            <td>
+                                High glucose levels are strongly associated with diabetes
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Blood Pressure
+                            </td>
+
+                            <td>
+                                Diastolic blood pressure measurement.
+                            </td>
+
+                            <td>
+                                Around 80 mmHg
+                            </td>
+
+                            <td>
+                                Very high or very low blood pressure may indicate health complications
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Skin Thickness
+                            </td>
+
+                            <td>
+                                Thickness of triceps skin fold used to estimate body fat.
+                            </td>
+
+                            <td>
+                                Moderate skin thickness values
+                            </td>
+
+                            <td>
+                                Higher values may correlate with obesity-related diabetes risk
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Insulin
+                            </td>
+
+                            <td>
+                                Insulin concentration measured in blood.
+                            </td>
+
+                            <td>
+                                Balanced insulin response
+                            </td>
+
+                            <td>
+                                Extremely high or low insulin values may indicate metabolic abnormalities
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                BMI
+                            </td>
+
+                            <td>
+                                Body Mass Index calculated using weight and height.
+                            </td>
+
+                            <td>
+                                Between 18.5 and 24.9
+                            </td>
+
+                            <td>
+                                BMI above 30 is commonly associated with obesity and diabetes risk
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Diabetes Pedigree Function
+                            </td>
+
+                            <td>
+                                Score estimating hereditary diabetes likelihood based on family history.
+                            </td>
+
+                            <td>
+                                Lower hereditary risk score
+                            </td>
+
+                            <td>
+                                Higher values indicate stronger genetic predisposition to diabetes
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Age
+                            </td>
+
+                            <td>
+                                Age of the patient in years.
+                            </td>
+
+                            <td>
+                                Lower age with stable metabolic indicators
+                            </td>
+
+                            <td>
+                                Diabetes risk generally increases with age
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+        <div class="text-center mb-5">
+
+            <a href="{{ url_for('home') }}" class="back-btn">
+                Back to Home
+            </a>
+
+        </div>
+
+        <div class="footer">
+
+            SymptoSense is an academic machine learning project and should not replace professional medical
+            consultation.
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

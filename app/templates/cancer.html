@@ -15,11 +15,11 @@
         <div class="text-center mb-5">
 
             <h1 class="fw-bold text-success">
-                Breast Cancer Report/Analysis
+                Tumor Report/Analysis
             </h1>
 
             <p class="text-muted fs-5">
-                Fill in the diagnostic parameters below to generate your breast cancer analysis report.
+                Fill in the diagnostic parameters below to generate your Tumor analysis report.
             </p>
 
         </div>
@@ -195,15 +195,28 @@
 
             </div>
 
-            <div class="text-center mt-5">
+            <div class="text-center mt-5 d-flex justify-content-center gap-3 flex-wrap">
 
-                <button type="submit" class="btn btn-success btn-lg px-5 py-3 rounded-pill shadow-lg">
+    <button
+        type="submit"
+        class="btn btn-success btn-lg px-5 py-3 rounded-pill shadow-lg"
+    >
 
-                    Generate Cancer Report
+        Generate Cancer Report
 
-                </button>
+    </button>
 
-            </div>
+    <a
+        href="{{ url_for('input_guide') }}#tumor"
+        target="_blank"
+        class="btn btn-outline-success btn-lg px-4 py-3 rounded-pill"
+    >
+
+        Need Help With Inputs?
+
+    </a>
+
+</div>
 
         </form>
 

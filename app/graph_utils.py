@@ -1,8 +1,35 @@
-import matplotlib.pyplot as plt
-import seaborn as sns
-import pandas as pd
-from sklearn.preprocessing import MinMaxScaler
 import numpy as np
+import pandas as pd
+import seaborn as sns
+from sklearn.preprocessing import MinMaxScaler
+
+
+import matplotlib
+matplotlib.use('Agg') 
+import matplotlib.pyplot as plt
+
+#production handling for multiple images genration at same time
+import uuid
+import os
+import glob
+import time
+
+def cleanup_old_graphs():
+    current_time = time.time()
+    files = glob.glob('app/static/graphs/*')
+    for file in files:
+        file_age = current_time - os.path.getmtime(file)
+
+        if file_age > 300:
+            os.remove(file)
+#basically , whenever the file gets 5 min older , we will delete it. 
+'''
+why have i added this though ? as if 2 users generate the graph at same time , and one of them
+refreshes his site , then that will probably cause an issue. this function will handle it perfectly
+move to line68 , and you will understand the unique name genration for graphs.
+'''
+
+
 
 heart_df = pd.read_csv('data/heart.csv')
 cancer_df = pd.read_csv('data/cancer.csv')
@@ -40,8 +67,17 @@ def heart_chol_graph(chol):
     plt.legend()
     plt.grid(alpha=0.3)
     plt.tight_layout()
-    plt.savefig('app/static/graphs/heart_cholesterol.jpg')
+
+    
+    unique_id = uuid.uuid4().hex
+    filename = f'heart_cholestrol_{unique_id}.jpg'
+    filepath = f'app/static/graphs/{filename}'
+    plt.savefig(filepath)
+    # plt.savefig('app/static/graphs/heart_cholesterol.jpg') replacing this in every function now
+
     plt.close()
+    return filename
+
 
 def heart_thalach_graph(thalach):
     plt.figure(figsize=(10,6))
@@ -52,7 +88,7 @@ def heart_thalach_graph(thalach):
         data = heart_df,
         x = 'target',
         y = 'thalach',
-        palette=['green' , 'red']
+        color = 'silver'
     )
 
     plt.scatter(
@@ -69,8 +105,13 @@ def heart_thalach_graph(thalach):
     plt.legend()
     plt.grid(alpha = 0.3)
     plt.tight_layout()
-    plt.savefig('app/static/graphs/heart_thalach.jpg')
+
+    unique_id = uuid.uuid4().hex
+    filename = f'heart_thalach_{unique_id}.jpg'
+    filepath = f'app/static/graphs/{filename}'
+    plt.savefig(filepath)
     plt.close()
+    return filename
 
 
 def heart_oldpeak_graph(oldpeak):
@@ -105,8 +146,13 @@ def heart_oldpeak_graph(oldpeak):
     plt.legend()
     plt.grid(alpha = 0.3)
     plt.tight_layout()
-    plt.savefig('app/static/graphs/heart_oldpeak.jpg')
+    
+    unique_id = uuid.uuid4().hex
+    filename = f'heart_oldpeak_{unique_id}.jpg'
+    filepath = f'app/static/graphs/{filename}'
+    plt.savefig(filepath)
     plt.close()
+    return filename
 
 
 def heart_final_graph(patient_values):
@@ -172,7 +218,13 @@ def heart_final_graph(patient_values):
     plt.legend()
     plt.grid(alpha = 0.3)
     plt.tight_layout()
-    plt.savefig('app/static/graphs/heart_feature_importance.jpg')
+    unique_id = uuid.uuid4().hex
+
+    filename = f'heart_final_{unique_id}.jpg'
+    filepath = f'app/static/graphs/{filename}'
+    plt.savefig(filepath)
+    plt.close()
+    return filename
 
 def heart_comparison_table(patient_values):
     features = [
@@ -241,8 +293,13 @@ def cancer_radius_worst(patient_radius_worst):
     plt.legend()
     plt.grid(alpha = 0.3)
     plt.tight_layout()
-    plt.savefig('app/static/graphs/cancer_radius_worst.jpg')
+    
+    unique_id = uuid.uuid4().hex
+    filename = f'cancer_radius_worst_{unique_id}.jpg'
+    filepath = f'app/static/graphs/{filename}'
+    plt.savefig(filepath)
     plt.close()
+    return filename
 
 
 def cancer_concave_worst(patient_concave_worst):
@@ -277,8 +334,12 @@ def cancer_concave_worst(patient_concave_worst):
     plt.legend()
     plt.grid(alpha = 0.3)
     plt.tight_layout()
-    plt.savefig('app/static/graphs/cancer_concave_worst.jpg')
+    unique_id = uuid.uuid4().hex
+    filename = f'cancer_concave_worst_{unique_id}.jpg'
+    filepath = f'app/static/graphs/{filename}'
+    plt.savefig(filepath)
     plt.close()
+    return filename
 
 def cancer_area_worst(patient_area_worst):
     plt.figure(figsize=(10,6))
@@ -302,7 +363,12 @@ def cancer_area_worst(patient_area_worst):
     plt.legend()
     plt.grid(alpha = 0.9)
     plt.tight_layout()
-    plt.savefig('app/static/graphs/cancer_area_worst.jpg')
+    unique_id = uuid.uuid4().hex
+    filename = f'cancer_area_worst_{unique_id}.jpg'
+    filepath = f'app/static/graphs/{filename}'
+    plt.savefig(filepath)
+    plt.close()
+    return filename
 
 
 def cancer_final(patient_values):
@@ -368,7 +434,12 @@ def cancer_final(patient_values):
     plt.legend()
     plt.grid(alpha  = 0.3)
     plt.tight_layout()
-    plt.savefig('app/static/graphs/cancer_final.jpg')
+    unique_id = uuid.uuid4().hex
+    filename = f'cancer_final_{unique_id}.jpg'
+    filepath = f'app/static/graphs/{filename}'
+    plt.savefig(filepath)
+    plt.close()
+    return filename
 
 def cancer_comparison_table(patient_values):
 
@@ -439,9 +510,12 @@ def diabetes_glucose(patient_glucose):
     plt.grid(alpha = 0.3)
     plt.legend()
     plt.tight_layout()
-    plt.savefig('app/static/graphs/diabetes_glucose.jpg')
+    unique_id = uuid.uuid4().hex
+    filename = f'diabetes_glucose_{unique_id}.jpg'
+    filepath = f'app/static/graphs/{filename}'
+    plt.savefig(filepath)
     plt.close()
-
+    return filename
 
 def diabetes_bmi(patient_bmi):
     plt.figure(figsize=(10,6))
@@ -472,8 +546,12 @@ def diabetes_bmi(patient_bmi):
     plt.legend()
     plt.grid(alpha=0.3)
     plt.tight_layout()
-    plt.savefig('app/static/graphs/diabetes_bmi.jpg')
+    unique_id = uuid.uuid4().hex
+    filename = f'diabetes_bmi_{unique_id}.jpg'
+    filepath = f'app/static/graphs/{filename}'
+    plt.savefig(filepath)
     plt.close()
+    return filename
 
 def diabetes_insulin(patient_insulin):
     plt.figure(figsize=(10,6))
@@ -498,8 +576,12 @@ def diabetes_insulin(patient_insulin):
     plt.legend()
     plt.grid(alpha=0.3)
     plt.tight_layout()
-    plt.savefig('app/static/graphs/diabetes_insulin.jpg')
+    unique_id = uuid.uuid4().hex
+    filename = f'diabetes_insulin_{unique_id}.jpg'
+    filepath = f'app/static/graphs/{filename}'
+    plt.savefig(filepath)
     plt.close()
+    return filename
 
 def diabetes_main(patient_values):
     features = [
@@ -562,8 +644,12 @@ def diabetes_main(patient_values):
     plt.legend(fontsize = 13)
     plt.grid(alpha=0.3)
     plt.tight_layout()
-    plt.savefig('app/static/graphs/diabetes_final.jpg')
+    unique_id = uuid.uuid4().hex
+    filename = f'diabetes_main_{unique_id}.jpg'
+    filepath = f'app/static/graphs/{filename}'
+    plt.savefig(filepath)
     plt.close()
+    return filename
 
 def diabetes_comparison_table(patient_values):
 

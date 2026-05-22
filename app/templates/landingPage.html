@@ -1,87 +1,160 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SymptoSense</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-  </head>
-  <body>
-    <div id="carouselExampleDark" class="carousel  slide">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active" data-bs-interval="10000">
-      <img src="https://fastly.picsum.photos/id/660/1200/500.jpg?hmac=_mJK_LVa-6W0l46Ct4pobfeQLgczwWLYwH2tvRE8Trk"class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h1>Predict Diseases Accurately</h1>
-        <h4> uses machine lerning models to predict the posibilites of diseases. </h4>
-      </div>
-    </div>
-    <div class="carousel-item" data-bs-interval="2000">
-      <img src="https://fastly.picsum.photos/id/1012/1200/500.jpg?hmac=POTbcYSXCOZbOGlXetv9dHtD0m4NNIC-34GsBqHhZk8" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h1>Genrate a usefull visual report</h1>
-        <h4> the report consists of graphs , prediction , and related visuals to understand the condition properly </h4>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="https://fastly.picsum.photos/id/880/1200/500.jpg?hmac=9YwO5Agumx3NPsa3zgBLwhW1oXJDw7DWuartnRgMWEE" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h1>Diabetes | cancer | heart Disease</h1>
-        <h4> 3 avaliable tests </h4>
-      </div>
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
+    <title>SymptoSense - ML Diagnostics</title>
 
-<div class="card-group">
-  <div class="card">
-    
-    <div class="card-body">
-      <h5 class="card-title">Heart Report</h5>
-      <p class="card-text">Heart Diseases are getting very much common in todays world.Our genrated reports have a 87% accuracy for predictions.</p>
-    </div>
-    <div class="card-footer">
-      <a href="{{ url_for('heart') }}" class="btn btn-outline-success">
-            Generate Heart Report
-      </a>
-    </div>
-  </div>
-  <div class="card">
-    
-    <div class="card-body">
-      <h5 class="card-title">Cancer Report</h5>
-      <p class="card-text">Cancer can get deadly if not predicted in early stages.Our Brest Cancer reports show a flashing 98% accuracy</p>
-    </div>
-    <div class="card-footer">
-      <a href="{{ url_for('cancer') }}" class="btn btn-outline-success">Generate Breast Cancer Reports</a>
-    </div>
-  </div>
-  <div class="card">
-    
-    <div class="card-body">
-      <h5 class="card-title">Diabetes Report</h5>
-      <p class="card-text">The model currently achieves around 77% accuracy and can help identify potential diabetes risk patterns.</p>
-    </div>
-    <div class="card-footer">
-      <a href="{{ url_for('diabetes')}}" class="btn btn-outline-success">Generate Diabetes Report</a>
-    </div>
-  </div>
-</div>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-  </body>
+    <style>
+        body {
+            background-color: #f4fff6;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: #2c3e35;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+       
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(25, 135, 84, 0.15);
+        }
+
+        .custom-progress-bg {
+            background-color: rgba(25, 135, 84, 0.12);
+        }
+        
+        .module-card {
+            background-color: white;
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+    </style>
+</head>
+
+<body>
+
+  
+    <div class="container py-5">
+
+        
+        <div class="row align-items-center mb-5 pb-3">
+            
+         
+            <div class="col-lg-6 mb-5 mb-lg-0 pe-lg-5">
+                <h1 class="fw-bolder text-dark mb-4" style="font-size: 4rem; letter-spacing: -1.5px;">
+                    SymptoSense
+                </h1>
+                
+                <p class="text-muted pe-md-5" style="font-size: 1.15rem; line-height: 1.8;">
+                    A machine learning-powered diagnostic platform. We transform complex clinical datasets into clear, interpretable visual reports for rapid health analysis.
+                </p>
+            </div>
+
+           
+            <div class="col-lg-6 ps-lg-4">
+                <div class="card glass-panel rounded-4 p-5 shadow-sm">
+                    
+                    <h5 class="text-dark fw-bold mb-4 pb-2 d-flex align-items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-cpu me-3 text-success" viewBox="0 0 16 16">
+                            <path d="M5 0a.5.5 0 0 1 .5.5V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2A2.5 2.5 0 0 1 14 4.5h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14a2.5 2.5 0 0 1-2.5 2.5v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14A2.5 2.5 0 0 1 2 11.5H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2A2.5 2.5 0 0 1 4.5 2V.5A.5.5 0 0 1 5 0m-.5 3A1.5 1.5 0 0 0 3 4.5v7A1.5 1.5 0 0 0 4.5 13h7a1.5 1.5 0 0 0 1.5-1.5v-7A1.5 1.5 0 0 0 11.5 3zM5 6.5A1.5 1.5 0 0 1 6.5 5h3A1.5 1.5 0 0 1 11 6.5v3A1.5 1.5 0 0 1 9.5 11h-3A1.5 1.5 0 0 1 5 9.5zM6.5 6a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"/>
+                        </svg>
+                        Model Accuracy Metrics
+                    </h5>
+
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="fw-semibold text-secondary">Tumor Analysis</span>
+                            <span class="text-success fw-bold">98%</span>
+                        </div>
+                        <div class="progress custom-progress-bg" style="height: 8px; border-radius: 10px;">
+                            <div class="progress-bar bg-success rounded-pill" style="width: 98%"></div>
+                        </div>
+                    </div>
+
+               
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="fw-semibold text-secondary">Heart Disease</span>
+                            <span class="text-success fw-bold">87%</span>
+                        </div>
+                        <div class="progress custom-progress-bg" style="height: 8px; border-radius: 10px;">
+                            <div class="progress-bar bg-success rounded-pill" style="width: 87%"></div>
+                        </div>
+                    </div>
+
+
+                    <div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="fw-semibold text-secondary">Diabetes Analysis</span>
+                            <span class="text-success fw-bold">77%</span>
+                        </div>
+                        <div class="progress custom-progress-bg" style="height: 8px; border-radius: 10px;">
+                            <div class="progress-bar bg-success rounded-pill" style="width: 77%"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    
+        <div class="row g-4 justify-content-center">
+            
+           
+            <div class="col-lg-4 col-md-6">
+                <div class="card module-card shadow-sm rounded-4 h-100 p-4 p-xl-5 d-flex flex-column text-center">
+                    <h4 class="text-dark fw-bold mb-3">Tumor Report</h4>
+                    <p class="text-muted mb-4 flex-grow-1" style="line-height: 1.6;">
+                        Evaluate tumor-related measurements (radius, texture, perimeter) using explainable prediction graphs.
+                    </p>
+                    <a href="{{ url_for('cancer') }}" class="btn btn-success rounded-pill py-3 fw-bold w-100 shadow-sm">
+                        Launch Module
+                    </a>
+                </div>
+            </div>
+
+           
+            <div class="col-lg-4 col-md-6">
+                <div class="card module-card shadow-sm rounded-4 h-100 p-4 p-xl-5 d-flex flex-column text-center">
+                    <h4 class="text-dark fw-bold mb-3">Heart Disease</h4>
+                    <p class="text-muted mb-4 flex-grow-1" style="line-height: 1.6;">
+                        Analyze cardiovascular health features against healthy population medians to estimate risk.
+                    </p>
+                    <a href="{{ url_for('heart') }}" class="btn btn-success rounded-pill py-3 fw-bold w-100 shadow-sm">
+                        Launch Module
+                    </a>
+                </div>
+            </div>
+
+        
+            <div class="col-lg-4 col-md-6">
+                <div class="card module-card shadow-sm rounded-4 h-100 p-4 p-xl-5 d-flex flex-column text-center">
+                    <h4 class="text-dark fw-bold mb-3">Diabetes</h4>
+                    <p class="text-muted mb-4 flex-grow-1" style="line-height: 1.6;">
+                        Assess key diabetes indicators (glucose, BMI, insulin) through structured patient comparison.
+                    </p>
+                    <a href="{{ url_for('diabetes') }}" class="btn btn-success rounded-pill py-3 fw-bold w-100 shadow-sm">
+                        Launch Module
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="text-center text-muted mt-5 pt-3 small">
+            <p class="mb-0">SymptoSense is an academic ML project and should not replace professional medical consultation.</p>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
 </html>
-

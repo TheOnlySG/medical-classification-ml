@@ -182,16 +182,28 @@
 
             </div>
 
-            <div class="text-center mt-5">
+            <div class="text-center mt-5 d-flex justify-content-center gap-3 flex-wrap">
 
-                <button type="submit"
-                    class="btn btn-success btn-lg px-5 py-3 rounded-pill shadow-lg">
+    <button
+        type="submit"
+        class="btn btn-success btn-lg px-5 py-3 rounded-pill shadow-lg"
+    >
 
-                    Generate Diabetes Report
+        Generate Diabetes Report
 
-                </button>
+    </button>
 
-            </div>
+    <a
+        href="{{ url_for('input_guide') }}#diabetes"
+        target="_blank"
+        class="btn btn-outline-success btn-lg px-4 py-3 rounded-pill"
+    >
+
+        Need Help With Inputs?
+
+    </a>
+
+</div>
 
         </form>
 
