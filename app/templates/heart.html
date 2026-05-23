@@ -266,32 +266,43 @@
             </div>
 
 
-            <div class="text-center mt-5 d-flex justify-content-center gap-3 flex-wrap">
+<div class="row g-3 mt-5 justify-content-center">
 
+    <div class="col-12 col-md-auto">
 
-                <a href="{{ url_for('home') }}" class="btn btn-outline-dark btn-lg px-4 py-3 rounded-pill">
+        <a href="{{ url_for('home') }}"
+            class="btn btn-outline-dark btn-lg w-100 px-4 py-3 rounded-pill">
 
-                    Back To Home
+            Back To Home
 
-                </a>
+        </a>
 
+    </div>
 
+    <div class="col-12 col-md-auto">
 
+        <button type="submit"
+            class="btn btn-success btn-lg w-100 px-5 py-3 rounded-pill shadow-lg">
 
-                <button type="submit" class="btn btn-success btn-lg px-5 py-3 rounded-pill shadow-lg">
+            Generate Heart Report
 
-                    Generate Heart Report
+        </button>
 
-                </button>
+    </div>
 
-                <a href="{{ url_for('input_guide') }}#heart" target="_blank"
-                    class="btn btn-outline-success btn-lg px-4 py-3 rounded-pill">
+    <div class="col-12 col-md-auto">
 
-                    Need Help With Inputs?
+        <a href="{{ url_for('input_guide') }}#heart"
+            target="_blank"
+            class="btn btn-outline-success btn-lg w-100 px-4 py-3 rounded-pill">
 
-                </a>
+            Need Help With Inputs?
 
-            </div>
+        </a>
+
+    </div>
+
+</div>
 
         </form>
 

@@ -15,6 +15,6 @@ COPY . .
 
 #final layer to run the app
 EXPOSE 5000
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "app.app:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "1", "--timeout", "120", "app.app:app"]
 
 
