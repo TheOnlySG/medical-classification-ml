@@ -1,9 +1,8 @@
-pandas
-numpy
-seaborn
-matplotlib
-scikit-learn
-jupyter
-flask
-joblib
+Flask
 gunicorn
+numpy
+pandas
+matplotlib
+seaborn
+scikit-learn
+joblib

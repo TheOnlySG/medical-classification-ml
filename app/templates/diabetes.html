@@ -20,6 +20,18 @@
             </p>
         </div>
 
+
+        {% if error %}
+
+        <div class="alert alert-danger mb-4">
+
+            {{ error }}
+
+        </div>
+
+        {% endif %}
+
+
         <form action="" method="POST">
 
             <div class="card shadow-lg border-success rounded-4 mb-4">
@@ -38,11 +50,8 @@
                                 Patient Name
                             </label>
 
-                            <input type="text"
-                                class="form-control form-control-lg"
-                                name="patient_name"
-                                placeholder="e.g. Spandan Ghodke"
-                                required>
+                            <input type="text" class="form-control form-control-lg" name="patient_name"
+                                placeholder="e.g. Spandan Ghodke" required>
 
                         </div>
 
@@ -52,10 +61,7 @@
                                 Age
                             </label>
 
-                            <input type="number"
-                                class="form-control form-control-lg"
-                                name="Age"
-                                placeholder="e.g. 35"
+                            <input type="number" class="form-control form-control-lg" name="Age" placeholder="e.g. 35"
                                 required>
 
                         </div>
@@ -66,11 +72,8 @@
                                 Pregnancies
                             </label>
 
-                            <input type="number"
-                                class="form-control form-control-lg"
-                                name="Pregnancies"
-                                placeholder="e.g. 2"
-                                required>
+                            <input type="number" class="form-control form-control-lg" name="Pregnancies"
+                                placeholder="e.g. 2" required>
 
                         </div>
 
@@ -96,11 +99,8 @@
                                 Glucose
                             </label>
 
-                            <input type="number"
-                                class="form-control form-control-lg"
-                                name="Glucose"
-                                placeholder="e.g. 140"
-                                required>
+                            <input type="number" class="form-control form-control-lg" name="Glucose"
+                                placeholder="e.g. 140" required>
 
                         </div>
 
@@ -110,11 +110,8 @@
                                 Blood Pressure
                             </label>
 
-                            <input type="number"
-                                class="form-control form-control-lg"
-                                name="BloodPressure"
-                                placeholder="e.g. 80"
-                                required>
+                            <input type="number" class="form-control form-control-lg" name="BloodPressure"
+                                placeholder="e.g. 80" required>
 
                         </div>
 
@@ -124,11 +121,8 @@
                                 Skin Thickness
                             </label>
 
-                            <input type="number"
-                                class="form-control form-control-lg"
-                                name="SkinThickness"
-                                placeholder="e.g. 25"
-                                required>
+                            <input type="number" class="form-control form-control-lg" name="SkinThickness"
+                                placeholder="e.g. 25" required>
 
                         </div>
 
@@ -138,11 +132,8 @@
                                 Insulin
                             </label>
 
-                            <input type="number"
-                                class="form-control form-control-lg"
-                                name="Insulin"
-                                placeholder="e.g. 120"
-                                required>
+                            <input type="number" class="form-control form-control-lg" name="Insulin"
+                                placeholder="e.g. 120" required>
 
                         </div>
 
@@ -152,12 +143,8 @@
                                 BMI
                             </label>
 
-                            <input type="number"
-                                step="any"
-                                class="form-control form-control-lg"
-                                name="BMI"
-                                placeholder="e.g. 28.5"
-                                required>
+                            <input type="number" step="any" class="form-control form-control-lg" name="BMI"
+                                placeholder="e.g. 28.5" required>
 
                         </div>
 
@@ -167,12 +154,8 @@
                                 Diabetes Pedigree Function
                             </label>
 
-                            <input type="number"
-                                step="any"
-                                class="form-control form-control-lg"
-                                name="DiabetesPedigreeFunction"
-                                placeholder="e.g. 0.627"
-                                required>
+                            <input type="number" step="any" class="form-control form-control-lg"
+                                name="DiabetesPedigreeFunction" placeholder="e.g. 0.627" required>
 
                         </div>
 
@@ -184,26 +167,29 @@
 
             <div class="text-center mt-5 d-flex justify-content-center gap-3 flex-wrap">
 
-    <button
-        type="submit"
-        class="btn btn-success btn-lg px-5 py-3 rounded-pill shadow-lg"
-    >
 
-        Generate Diabetes Report
+                <a href="{{ url_for('home') }}" class="btn btn-outline-dark btn-lg px-4 py-3 rounded-pill">
 
-    </button>
+                    Back To Home
 
-    <a
-        href="{{ url_for('input_guide') }}#diabetes"
-        target="_blank"
-        class="btn btn-outline-success btn-lg px-4 py-3 rounded-pill"
-    >
+                </a>
 
-        Need Help With Inputs?
 
-    </a>
 
-</div>
+                <button type="submit" class="btn btn-success btn-lg px-5 py-3 rounded-pill shadow-lg">
+
+                    Generate Diabetes Report
+
+                </button>
+
+                <a href="{{ url_for('input_guide') }}#diabetes" target="_blank"
+                    class="btn btn-outline-success btn-lg px-4 py-3 rounded-pill">
+
+                    Need Help With Inputs?
+
+                </a>
+
+            </div>
 
         </form>
 

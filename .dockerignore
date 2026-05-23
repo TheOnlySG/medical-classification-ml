@@ -1,0 +1,8 @@
+venv/
+__pycache__/
+*.pyc
+.git/
+.gitignore
+README.md
+Research Notebooks/
+image.png

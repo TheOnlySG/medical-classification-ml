@@ -44,6 +44,31 @@ def heart():
         ca = int(request.form['ca'])
         thal = int(request.form['thal'])
 
+        #lets handle negetive value inputs
+
+        numeric_values = [
+            age,
+            sex,
+            cp,
+            trestbps,
+            chol,
+            fbs,
+            restecg,
+            thalach,
+            exang,
+            oldpeak,
+            slope,
+            ca,
+            thal
+        ]
+        if any(value < 0 for value in numeric_values):
+            return render_template(
+                "heart.html",
+                error = "Values cannot be negative."
+            )
+        
+        
+        
         input_df = pd.DataFrame([{
                 'age': age,
                 'sex': sex,
@@ -119,6 +144,26 @@ def cancer():
         area_worst = float(request.form['area_worst'])
         concave_points_worst = float(request.form['concave_points_worst'])
 
+        arr = [
+            radius_mean,
+            texture_mean,
+            perimeter_mean,
+            area_mean,
+            concavity_mean,
+            concave_points_mean,
+            radius_worst,
+            perimeter_worst,
+            area_worst,
+            concave_points_worst
+        ]
+
+        if any(value < 0 for value in arr):
+
+            return render_template(
+                'cancer.html',
+                error = 'Values cannot be negative.'
+            )
+
         input_df = pd.DataFrame([{
             'radius_mean': radius_mean,
             'texture_mean': texture_mean,
@@ -183,6 +228,23 @@ def diabetes():
         Insulin = int(request.form['Insulin'])
         BMI = float(request.form['BMI'])
         DiabetesPedigreeFunction = float(request.form['DiabetesPedigreeFunction'])
+        arr = [
+            Age,
+            Pregnancies,
+            Glucose,
+            BloodPressure,
+            SkinThickness,
+            Insulin,
+            BMI,
+            DiabetesPedigreeFunction
+        ]
+
+        if any(value < 0 for value in arr):
+
+            return render_template(
+                'diabetes.html',
+                error = 'Values cannot be negative.'
+            )
 
         input_df = pd.DataFrame([{
             'Pregnancies': Pregnancies,

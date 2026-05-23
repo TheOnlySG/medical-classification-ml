@@ -22,6 +22,17 @@
         </div>
 
 
+        {% if error %}
+
+        <div class="alert alert-danger mb-4">
+
+            {{ error }}
+
+        </div>
+
+        {% endif %}
+
+
         <form action="" method="POST">
 
 
@@ -257,26 +268,30 @@
 
             <div class="text-center mt-5 d-flex justify-content-center gap-3 flex-wrap">
 
-    <button
-        type="submit"
-        class="btn btn-success btn-lg px-5 py-3 rounded-pill shadow-lg"
-    >
 
-        Generate Heart Report
+                <a href="{{ url_for('home') }}" class="btn btn-outline-dark btn-lg px-4 py-3 rounded-pill">
 
-    </button>
+                    Back To Home
 
-    <a
-        href="{{ url_for('input_guide') }}#heart"
-        target="_blank"
-        class="btn btn-outline-success btn-lg px-4 py-3 rounded-pill"
-    >
+                </a>
 
-        Need Help With Inputs?
 
-    </a>
 
-</div>
+
+                <button type="submit" class="btn btn-success btn-lg px-5 py-3 rounded-pill shadow-lg">
+
+                    Generate Heart Report
+
+                </button>
+
+                <a href="{{ url_for('input_guide') }}#heart" target="_blank"
+                    class="btn btn-outline-success btn-lg px-4 py-3 rounded-pill">
+
+                    Need Help With Inputs?
+
+                </a>
+
+            </div>
 
         </form>
 
