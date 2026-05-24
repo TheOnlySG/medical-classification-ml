@@ -6,6 +6,8 @@
 
 SymptoSense is an ML-powered diagnostic platform that analyzes clinical inputs for Heart Disease, Diabetes, and Tumor prediction while generating explainable, medical-style reports with visual insights and patient comparisons.
 
+Launch Live Deployment - https://symptosense-68xi.onrender.com/ </br>
+<i>Hosted on Render free tier — cold starts after inactivity may take <b>30–60 seconds</b>.</i>
 
 ---
 
