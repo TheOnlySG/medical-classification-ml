@@ -1,150 +1,87 @@
-# SymptoSense — AI Powered Medical Screening & Analytics
-
-SymptoSense is a Machine Learning based medical screening web application focused on predicting diseases using patient medical data and generating visual health analysis reports.
-
-The project combines:
-- Machine Learning
-- Medical analytics
-- Flask web development
-- Interactive screening forms
-- Report generation concepts
+<p align="center">
+  <img src="assets/github_banner.png" width="100%">
+</p>
 
 ---
 
-# Diseases Currently Supported
+SymptoSense is an ML-powered diagnostic platform that analyzes clinical inputs for Heart Disease, Diabetes, and Tumor prediction while generating explainable, medical-style reports with visual insights and patient comparisons.
 
-- Heart Disease
-- Diabetes
-- Breast Cancer
+Built with Flask, Scikit-learn, Matplotlib, Gunicorn, and Docker.
 
 ---
 
-# Project Progress
+## Features
 
-## Completed
+<table>
+<tr>
+<td width="50%">
 
-### Machine Learning & Research
-- Complete EDA for all 3 datasets
-- Data preprocessing and cleaning
-- Hidden missing value handling
-- Correlation analysis
-- Feature importance analysis
-- Model evaluation and comparison
-- Final model selection for deployment
+### Heart Disease Analysis
+Analyze cardiovascular health indicators with ML-powered risk prediction and visual comparisons.
 
-### Finalized Models
-| Disease | Final Model |
-|---|---|
-| Heart Disease | Random Forest Classifier |
-| Diabetes | Random Forest Classifier |
-| Breast Cancer | Logistic Regression |
+</td>
 
-### Production ML Pipeline
-- Separate training scripts created
-- Models exported using Joblib
-- Scalers exported separately
-- Organized project architecture
+<td width="50%">
 
-### Flask Frontend Development
-- Multi-page Flask application setup
-- Landing page completed
-- Heart Disease screening form completed
-- Diabetes screening form completed
-- Breast Cancer screening form completed
+### Diabetes Prediction
+Evaluate glucose, BMI, insulin, and related metrics through explainable patient analysis.
 
----
+</td>
+</tr>
 
-# Breast Cancer Optimization
+<tr>
+<td width="50%">
 
-The Breast Cancer model was optimized using feature selection.
+### Tumor Diagnostics
+Generate interpretable tumor analysis reports using clinical measurement distributions.
 
-- Reduced from 30 features → 10 important features
-- Accuracy remained ~97%
-- Improved usability and frontend experience significantly
+</td>
 
-Selected features include:
-- Radius
-- Texture
-- Perimeter
-- Area
-- Concavity
-- Concave Points
+<td width="50%">
 
----
+### Explainable Reports
+Medical-style printable reports with feature importance graphs and patient comparisons.
 
-# Tech Stack
+</td>
+</tr>
 
-## Machine Learning
-- Python
-- Pandas
-- NumPy
-- Scikit-learn
+</table>
 
-## Data Visualization
-- Matplotlib
-- Seaborn
 
-## Web Development
-- Flask
-- HTML
-- Bootstrap 5
+## Sample Reports
 
-## Model Serialization
-- Joblib
+<table>
+<tr>
 
----
+<td align="center" width="33%">
 
-# Current Status
+<a href="assets/heart-report.pdf">
 
-🚧 Active Development
+### Heart Disease Report
 
-### Completed
-- EDA
-- Model training
-- Model exporting
-- Flask app setup
-- Frontend screening forms
+</a>
 
-### Currently Working On
-- Backend prediction pipelines
-- Dynamic report pages
-- Flask form handling
-- Model integration with frontend
+</td>
 
----
+<td align="center" width="33%">
 
-# Planned Features
+<a href="assets/diabetes-report.pdf">
 
-- Real-time disease prediction
-- Medical style analytics reports
-- Dynamic graphs and comparisons
-- Probability based prediction insights
-- PDF report export
-- Improved UI/UX
-- Deployment and hosting
+### Diabetes Report
 
----
+</a>
 
-# Future Improvements
+</td>
 
-- XGBoost implementation
-- Hyperparameter tuning
-- Cross Validation
-- ROC-AUC analysis
-- SHAP / explainable AI
-- Advanced medical analytics dashboard
+<td align="center" width="33%">
 
----
+<a href="assets/tumor-report.pdf">
 
-# Learning Outcomes
+### Tumor Analysis Report
 
-This project helped in understanding:
-- Real-world ML workflows
-- EDA and preprocessing
-- Feature engineering and selection
-- Model evaluation techniques
-- Flask backend fundamentals
-- Frontend + ML integration
-- Converting notebooks into deployable systems
+</a>
 
----
+</td>
+
+</tr>
+</table>
