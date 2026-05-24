@@ -6,7 +6,6 @@
 
 SymptoSense is an ML-powered diagnostic platform that analyzes clinical inputs for Heart Disease, Diabetes, and Tumor prediction while generating explainable, medical-style reports with visual insights and patient comparisons.
 
-Built with Flask, Scikit-learn, Matplotlib, Gunicorn, and Docker.
 
 ---
 
@@ -47,27 +46,19 @@ Medical-style printable reports with feature importance graphs and patient compa
 
 </table>
 
+---
 
 ## Sample Reports
 
-<table>
+<table width="100%">
+
 <tr>
 
 <td align="center" width="33%">
 
-<a href="assets/heart-report.pdf">
+<a href="./assets/heart_report.pdf">
 
-### Heart Disease Report
-
-</a>
-
-</td>
-
-<td align="center" width="33%">
-
-<a href="assets/diabetes-report.pdf">
-
-### Diabetes Report
+<b>Heart Disease Report</b>
 
 </a>
 
@@ -75,13 +66,92 @@ Medical-style printable reports with feature importance graphs and patient compa
 
 <td align="center" width="33%">
 
-<a href="assets/tumor-report.pdf">
+<a href="./assets/diabetes_report.pdf">
 
-### Tumor Analysis Report
+<b>Diabetes Report</b>
+
+</a>
+
+</td>
+
+<td align="center" width="33%">
+
+<a href="./assets/cancer_report.pdf">
+
+<b>Tumor Analysis Report</b>
 
 </a>
 
 </td>
 
 </tr>
+
 </table>
+
+---
+
+## How To Use
+
+<table width="100%">
+
+<tr>
+<th width="18%">Step</th>
+<th>Description</th>
+</tr>
+
+<tr>
+<td align="center"><b>1</b></td>
+<td>
+Choose one of the available diagnostic systems:
+Heart Disease, Diabetes, or Tumor Analysis.
+</td>
+</tr>
+
+<tr>
+<td align="center"><b>2</b></td>
+<td>
+Fill in the required patient health parameters using the provided medical input forms.
+</td>
+</tr>
+
+<tr>
+<td align="center"><b>3</b></td>
+<td>
+Submit the form to allow the ML model to process the patient profile and generate predictions.
+</td>
+</tr>
+
+<tr>
+<td align="center"><b>4</b></td>
+<td>
+Analyze generated graphs, feature importance visualizations, and patient comparison metrics.
+</td>
+</tr>
+
+<tr>
+<td align="center"><b>5</b></td>
+<td>
+Export the generated medical-style report as a printable PDF document.
+</td>
+</tr>
+
+</table>
+
+---
+
+## Tech Stack
+
+<p align="center">
+
+<img src="https://skillicons.dev/icons?i=flask,docker" />
+
+</p>
+
+<p align="center">
+
+<img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white">
+<img src="https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white">
+<img src="https://img.shields.io/badge/Seaborn-4C72B0?style=for-the-badge">
+<img src="https://img.shields.io/badge/Scikit--Learn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white">
+
+</p>
