@@ -160,6 +160,38 @@ Export the generated medical-style report as a printable PDF document.
 
 ---
 
+## ML Models Used
+
+<table width="100%">
+
+<tr>
+<th width="30%">Diagnostic Module</th>
+<th width="35%">Model</th>
+<th width="35%">Purpose</th>
+</tr>
+
+<tr>
+<td><b>Heart Disease Analysis</b></td>
+<td>Random Forest Classifier</td>
+<td>Predicts cardiovascular disease risk using patient clinical indicators.</td>
+</tr>
+
+<tr>
+<td><b>Diabetes Prediction</b></td>
+<td>Random Forest Classifier</td>
+<td>Analyzes diabetic health patterns and glucose-related measurements.</td>
+</tr>
+
+<tr>
+<td><b>Tumor Diagnostics</b></td>
+<td>Logistic Regression</td>
+<td>Classifies tumors as benign or malignant using clinical measurements.</td>
+</tr>
+
+</table>
+
+---
+
 ## Local Setup
 
 <table width="100%">
