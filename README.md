@@ -160,6 +160,108 @@ Export the generated medical-style report as a printable PDF document.
 
 ---
 
+## Local Setup
+
+<table width="100%">
+
+<tr>
+<th width="22%">Setup</th>
+<th>Description</th>
+</tr>
+
+<tr>
+
+<td>
+
+### Local Environment (venv)
+
+</td>
+
+<td>
+
+#### 1. Clone Repository
+
+```bash
+git clone https://github.com/TheOnlySG/SymptoSense.git
+cd SymptoSense
+```
+
+#### 2. Create Virtual Environment
+
+```bash
+python -m venv venv
+```
+
+##### Linux / macOS
+
+```bash
+source venv/bin/activate
+```
+
+##### Windows
+
+```bash
+venv\Scripts\activate
+```
+
+#### 3. Install Requirements
+
+```bash
+pip install -r requirements.txt
+```
+
+#### 4. Run Using Gunicorn
+
+```bash
+gunicorn app.app:app
+```
+
+Application will start on:
+
+```bash
+http://localhost:8000
+```
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+### Docker Deployment
+
+</td>
+
+<td>
+
+#### 1. Build Docker Image
+
+```bash
+docker build -t symptosense .
+```
+
+#### 2. Run Docker Container
+
+```bash
+docker run -p 5000:8000 symptosense
+```
+
+Application will start on:
+
+```bash
+http://localhost:5000
+```
+
+</td>
+
+</tr>
+
+</table>
+
+---
+
 ## License
 
 This project is licensed under the MIT License.
