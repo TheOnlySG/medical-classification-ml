@@ -155,3 +155,9 @@ Export the generated medical-style report as a printable PDF document.
 <img src="https://img.shields.io/badge/Scikit--Learn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white">
 
 </p>
+
+---
+
+## License
+
+This project is licensed under the MIT License.
